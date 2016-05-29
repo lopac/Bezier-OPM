@@ -1,4 +1,4 @@
-class CanvasUI {
+class CanvasUi {
     static width: number;
     static height: number;
     static taskContainer: boolean = false;

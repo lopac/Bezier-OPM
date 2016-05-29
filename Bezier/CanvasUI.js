@@ -1,7 +1,7 @@
-var CanvasUI = (function () {
-    function CanvasUI() {
+var CanvasUi = (function () {
+    function CanvasUi() {
     }
-    CanvasUI.refresh = function (clickedButton) {
+    CanvasUi.refresh = function (clickedButton) {
         this.width = window.innerWidth * 0.70;
         this.height = 800;
         for (var i = 0; i < 9; i++) {
@@ -30,11 +30,11 @@ var CanvasUI = (function () {
             $("#taskBtns").empty();
         }
     };
-    CanvasUI.clearCanvas = function () {
+    CanvasUi.clearCanvas = function () {
         this.canvas.width = this.canvas.width;
     };
-    CanvasUI.taskContainer = false;
-    CanvasUI.canvas = document.getElementById("canvas");
-    return CanvasUI;
+    CanvasUi.taskContainer = false;
+    CanvasUi.canvas = document.getElementById("canvas");
+    return CanvasUi;
 }());
 //# sourceMappingURL=CanvasUI.js.map

@@ -193,9 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="TypeScript\Interfaces\" />
-    <Folder Include="TypeScript\Models\" />
-    <Folder Include="Views\DeCasteljauVector\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />

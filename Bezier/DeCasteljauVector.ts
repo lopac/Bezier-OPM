@@ -45,6 +45,10 @@ class DeCasteljauVector implements IDeCasteljau<Vector> {
 
     }
 
+    private toFixed(n: number) {
+        return parseFloat((n).toFixed(2)).toString();
+    }
+
     addPoint(point: Vector): void {
 
         this.points.push(point);
@@ -61,20 +65,20 @@ class DeCasteljauVector implements IDeCasteljau<Vector> {
 
 
         x.disabled = true;
-        x.value = point.x;
+        x.value = this.toFixed(point.x);
 
         let y = document.createElement("input");
         y.className = "form-control";
 
 
-        y.value = point.y;
+        y.value = this.toFixed(point.y);
         y.disabled = true;
 
         let z = document.createElement("input");
         z.className = "form-control";
   
 
-        z.value = point.z;
+        z.value = this.toFixed(point.z);
         z.disabled = true;
 
 

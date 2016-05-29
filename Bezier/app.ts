@@ -4,14 +4,13 @@
     if (IsMobile.any()) {
         $(".navbar-collapse collapse").remove();
         $("#logo").remove();
-        $(".navbar-header").append('<a href="#" class="navbar-brand">Bezierove krivulje</a>');
     }
 
     $("#task1")
         .click(() => {
 
 
-            CanvasUI.refresh($("#task1"));
+            CanvasUi.refresh($("#task1"));
 
 
             $("#taskTitle").html(() => "Zadatak 5.");
@@ -23,7 +22,7 @@
                     "<br/>da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. " +
                     "<br/>Kontrolne tocke neka budu redom spojene crtkanim linijama.");
 
-            new QuadriaticBezier(CanvasUI.width, CanvasUI.height, CanvasUI.canvas, 4);
+            new QuadriaticBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
 
         });
 
@@ -31,7 +30,7 @@
         .click(() => {
 
 
-            CanvasUI.refresh($("#task2"));
+            CanvasUi.refresh($("#task2"));
 
 
             $("#taskTitle").html(() => "Zadatak 6.");
@@ -47,7 +46,7 @@
 
     $("#task3")
         .click(() => {
-            CanvasUI.refresh($("#task3"));
+            CanvasUi.refresh($("#task3"));
 
             $("#taskTitle").html(() => "Zadatak 7.");
             $("#taskDescription")
@@ -141,7 +140,7 @@
 
     $("#task4")
         .click(() => {
-            CanvasUI.refresh($("#task4"));
+            CanvasUi.refresh($("#task4"));
             $("#taskTitle").html(() => "Zadatak 8.");
 
             $("#taskDescription")
@@ -150,13 +149,13 @@
                     "Uputa: Nakon što nacrtate željeni broj kontrolnih točaka te pritisnite \"Nacrtaj krivulju\" kako biste ju podijelili dva puta kliknite mišom na mjesto gdje biste željeli podijeliti krivulju na 2 dijela"
                 );
 
-            let c = new BezierSeparation(CanvasUI.width, CanvasUI.height, CanvasUI.canvas);
+            let c = new BezierSeparation(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
         });
 
     $("#task5")
         .click(() => {
 
-            CanvasUI.refresh($("#task5"));
+            CanvasUi.refresh($("#task5"));
 
             $("#taskTitle").html(() => "Zadatak 13.");
 
@@ -166,19 +165,19 @@
                     "Isto tako mora biti omoguceno korisniku da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. Kontrolne tocke neka budu redom spojene crtkanim linijama."
                 );
 
-            let d = new NBezier(CanvasUI.width, CanvasUI.height, CanvasUI.canvas);
+            let d = new NBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
 
         });
 
     $("#task6")
         .click(() => {
-            CanvasUI.refresh($("#task6"));
+            CanvasUi.refresh($("#task6"));
 
         });
 
     $("#task9")
         .click(() => {
-            CanvasUI.refresh($("#task9"));
+            CanvasUi.refresh($("#task9"));
 
         });
 

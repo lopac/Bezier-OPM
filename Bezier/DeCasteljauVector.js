@@ -26,6 +26,9 @@ var DeCasteljauVector = (function () {
         this.addPoint(new Vector(4, 1, 5));
         this.compute();
     }
+    DeCasteljauVector.prototype.toFixed = function (n) {
+        return parseFloat((n).toFixed(2)).toString();
+    };
     DeCasteljauVector.prototype.addPoint = function (point) {
         this.points.push(point);
         var pointForm = document.createElement("div");
@@ -36,14 +39,14 @@ var DeCasteljauVector = (function () {
         var x = document.createElement("input");
         x.className = "form-control";
         x.disabled = true;
-        x.value = point.x;
+        x.value = this.toFixed(point.x);
         var y = document.createElement("input");
         y.className = "form-control";
-        y.value = point.y;
+        y.value = this.toFixed(point.y);
         y.disabled = true;
         var z = document.createElement("input");
         z.className = "form-control";
-        z.value = point.z;
+        z.value = this.toFixed(point.z);
         z.disabled = true;
         pointForm.appendChild(formLabel);
         pointForm.appendChild(this.breakline);

@@ -2,11 +2,10 @@ window.onload = function () {
     if (IsMobile.any()) {
         $(".navbar-collapse collapse").remove();
         $("#logo").remove();
-        $(".navbar-header").append('<a href="#" class="navbar-brand">Bezierove krivulje</a>');
     }
     $("#task1")
         .click(function () {
-        CanvasUI.refresh($("#task1"));
+        CanvasUi.refresh($("#task1"));
         $("#taskTitle").html(function () { return "Zadatak 5."; });
         $("#taskDescription")
             .html(function () {
@@ -15,11 +14,11 @@ window.onload = function () {
                 "<br/>da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. " +
                 "<br/>Kontrolne tocke neka budu redom spojene crtkanim linijama.";
         });
-        new QuadriaticBezier(CanvasUI.width, CanvasUI.height, CanvasUI.canvas, 4);
+        new QuadriaticBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
     });
     $("#task2")
         .click(function () {
-        CanvasUI.refresh($("#task2"));
+        CanvasUi.refresh($("#task2"));
         $("#taskTitle").html(function () { return "Zadatak 6."; });
         $("#taskDescription")
             .html(function () {
@@ -29,7 +28,7 @@ window.onload = function () {
     });
     $("#task3")
         .click(function () {
-        CanvasUI.refresh($("#task3"));
+        CanvasUi.refresh($("#task3"));
         $("#taskTitle").html(function () { return "Zadatak 7."; });
         $("#taskDescription")
             .html(function () {
@@ -81,33 +80,33 @@ window.onload = function () {
     });
     $("#task4")
         .click(function () {
-        CanvasUI.refresh($("#task4"));
+        CanvasUi.refresh($("#task4"));
         $("#taskTitle").html(function () { return "Zadatak 8."; });
         $("#taskDescription")
             .html(function () {
             return "Napišite na računalu algoritam koji će zadanu Bezierovu krivulju podijeliti na dva dijela na mjestu na kojemu korisnik to odluči i da nakon toga se može opet tim dijelovima mijenjati oblik pomoću njihovih kontrolnih točaka.<br/>" +
                 "Uputa: Nakon što nacrtate željeni broj kontrolnih točaka te pritisnite \"Nacrtaj krivulju\" kako biste ju podijelili dva puta kliknite mišom na mjesto gdje biste željeli podijeliti krivulju na 2 dijela";
         });
-        var c = new BezierSeparation(CanvasUI.width, CanvasUI.height, CanvasUI.canvas);
+        var c = new BezierSeparation(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
     });
     $("#task5")
         .click(function () {
-        CanvasUI.refresh($("#task5"));
+        CanvasUi.refresh($("#task5"));
         $("#taskTitle").html(function () { return "Zadatak 13."; });
         $("#taskDescription")
             .html(function () {
             return "Napravite na racunalu program koji ce omoguciti korisniku da oznaci k tocaka u ravnini za k ∈ {3,4,...,10} i da se nakon toga nacrta Bezierova krivulja stupnja k − 1 kojoj su to kontrolne tocke. " +
                 "Isto tako mora biti omoguceno korisniku da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. Kontrolne tocke neka budu redom spojene crtkanim linijama.";
         });
-        var d = new NBezier(CanvasUI.width, CanvasUI.height, CanvasUI.canvas);
+        var d = new NBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
     });
     $("#task6")
         .click(function () {
-        CanvasUI.refresh($("#task6"));
+        CanvasUi.refresh($("#task6"));
     });
     $("#task9")
         .click(function () {
-        CanvasUI.refresh($("#task9"));
+        CanvasUi.refresh($("#task9"));
     });
 };
 //# sourceMappingURL=app.js.map
