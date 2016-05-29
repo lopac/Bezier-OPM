@@ -567,6 +567,10 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
     }
 
+    private toFixed(n: number) {
+        return parseFloat((n).toFixed(2)).toString();
+    }
+
     showResult(rPoint: Point): void {
         console.log(rPoint);
         let pointForm = document.createElement("div");
@@ -580,13 +584,13 @@ class DeCasteljau implements IDeCasteljau<Point> {
         x.className = "form-control";
         x.disabled = true;
         x.type = "number";
-        x.value = rPoint.x;
+        x.value = this.toFixed(rPoint.x);
 
         let y = document.createElement("input");
         y.className = "form-control";
         y.disabled = true;
         y.type = "number";
-        y.value = rPoint.y;
+        y.value = this.toFixed(rPoint.y);
 
 
         pointForm.appendChild(formLabel);

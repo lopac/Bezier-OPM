@@ -380,6 +380,9 @@ var DeCasteljau = (function () {
         };
         $("#taskBtns").append(this.addPointBtn);
     }
+    DeCasteljau.prototype.toFixed = function (n) {
+        return parseFloat((n).toFixed(2)).toString();
+    };
     DeCasteljau.prototype.showResult = function (rPoint) {
         console.log(rPoint);
         var pointForm = document.createElement("div");
@@ -391,12 +394,12 @@ var DeCasteljau = (function () {
         x.className = "form-control";
         x.disabled = true;
         x.type = "number";
-        x.value = rPoint.x;
+        x.value = this.toFixed(rPoint.x);
         var y = document.createElement("input");
         y.className = "form-control";
         y.disabled = true;
         y.type = "number";
-        y.value = rPoint.y;
+        y.value = this.toFixed(rPoint.y);
         pointForm.appendChild(formLabel);
         pointForm.appendChild(this.breakline);
         pointForm.appendChild(x);
