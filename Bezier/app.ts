@@ -614,12 +614,10 @@ class DeCasteljau implements IDeCasteljau<Point> {
             url: "../api/DeCasteljau",
             contentType: "application/json"
         }).done(result => {
-
-            console.log(result);
-
+            this.showResult(new Point(result.X,result.Y));
         });
 
-        this.showResult(this.resultPoints[0]);
+       
     }
 
     addPoint(nPoint: Point = null): void {

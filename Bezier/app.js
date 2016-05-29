@@ -410,6 +410,7 @@ var DeCasteljau = (function () {
         $("#taskBtns").empty();
     };
     DeCasteljau.prototype.compute = function () {
+        var _this = this;
         var apiModel = new DeCasteljauApi(this.u, this.points);
         $.ajax({
             type: "POST",
@@ -417,9 +418,8 @@ var DeCasteljau = (function () {
             url: "../api/DeCasteljau",
             contentType: "application/json"
         }).done(function (result) {
-            console.log(result);
+            _this.showResult(new Point(result.X, result.Y));
         });
-        this.showResult(this.resultPoints[0]);
     };
     DeCasteljau.prototype.addPoint = function (nPoint) {
         if (nPoint === void 0) { nPoint = null; }
@@ -724,4 +724,3 @@ window.onload = function () {
         CanvasUI.refresh($("#task9"));
     });
 };
-//# sourceMappingURL=app.js.map
