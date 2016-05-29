@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bezierove krivulje</title>
+    <link href="/Content/Flatly.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.2.js" integrity="sha256-4/zUCqiq0kqxhZIyp4G0Gk+AOtCJsY1TA00k5ClsZYE=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <ul id="brand" class="nav navbar-nav navbar-left">
+                    <li id="logo">
+                        <a>
+                            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDQ3MCA0NzAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ3MCA0NzAiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPgogIDxnPgogICAgPHBhdGggZD0ibTQ2Mi41LDE5Ny41YzQuMTQzLDAgNy41LTMuMzU4IDcuNS03LjVzLTMuMzU3LTcuNS03LjUtNy41Yy05Ni40OTUsMC0xNzUtNzguNTA1LTE3NS0xNzUgMC00LjE0Mi0zLjM1Ny03LjUtNy41LTcuNXMtNy41LDMuMzU4LTcuNSw3LjVjMCwxMDQuNzY3IDg1LjIzMywxOTAgMTkwLDE5MHoiIGZpbGw9IiNGRkZGRkYiLz4KICAgIDxwYXRoIGQ9Im03LjUsMjcyLjVjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjVzMy4zNTcsNy41IDcuNSw3LjVjOTYuNDk1LDAgMTc1LDc4LjUwNSAxNzUsMTc1IDAsNC4xNDIgMy4zNTcsNy41IDcuNSw3LjVzNy41LTMuMzU4IDcuNS03LjVjMC0xMDQuNzY3LTg1LjIzMy0xOTAtMTkwLTE5MHoiIGZpbGw9IiNGRkZGRkYiLz4KICAgIDxwYXRoIGQ9Ik0yNTAsMzE4LjMzM2M0LjE0MywwLDcuNS0zLjM1OCw3LjUtNy41cy0zLjM1Ny03LjUtNy41LTcuNWgtNy41VjE2Ni42NjdoNy41YzQuMTQzLDAsNy41LTMuMzU4LDcuNS03LjUgICBzLTMuMzU3LTcuNS03LjUtNy41aC03LjVWOTAuODMzaDcuNWM0LjE0MywwLDcuNS0zLjM1OCw3LjUtNy41cy0zLjM1Ny03LjUtNy41LTcuNWgtNy41VjE1aDcuNWM0LjE0MywwLDcuNS0zLjM1OCw3LjUtNy41ICAgUzI1NC4xNDMsMCwyNTAsMGgtMzBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjVzMy4zNTcsNy41LDcuNSw3LjVoNy41djYwLjgzM0gyMjBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjVzMy4zNTcsNy41LDcuNSw3LjUgICBoNy41djYwLjgzM0gyMjBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjVzMy4zNTcsNy41LDcuNSw3LjVoNy41VjIyNy41aC02MC44MzNWMjIwYzAtNC4xNDItMy4zNTctNy41LTcuNS03LjUgICBzLTcuNSwzLjM1OC03LjUsNy41djcuNUg5MC44MzNWMjIwYzAtNC4xNDItMy4zNTctNy41LTcuNS03LjVzLTcuNSwzLjM1OC03LjUsNy41djcuNUgxNVYyMjBjMC00LjE0Mi0zLjM1Ny03LjUtNy41LTcuNSAgIFMwLDIxNS44NTgsMCwyMjB2MzBjMCw0LjE0MiwzLjM1Nyw3LjUsNy41LDcuNXM3LjUtMy4zNTgsNy41LTcuNXYtNy41aDYwLjgzM3Y3LjVjMCw0LjE0MiwzLjM1Nyw3LjUsNy41LDcuNXM3LjUtMy4zNTgsNy41LTcuNSAgIHYtNy41aDYwLjgzNHY3LjVjMCw0LjE0MiwzLjM1Nyw3LjUsNy41LDcuNXM3LjUtMy4zNTgsNy41LTcuNXYtNy41SDIyNy41djYwLjgzM0gyMjBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjUgICBzMy4zNTcsNy41LDcuNSw3LjVoNy41djYwLjgzM0gyMjBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjVzMy4zNTcsNy41LDcuNSw3LjVoNy41VjQ1NUgyMjBjLTQuMTQzLDAtNy41LDMuMzU4LTcuNSw3LjUgICBzMy4zNTcsNy41LDcuNSw3LjVoMzBjNC4xNDMsMCw3LjUtMy4zNTgsNy41LTcuNXMtMy4zNTctNy41LTcuNS03LjVoLTcuNXYtNjAuODMzaDcuNWM0LjE0MywwLDcuNS0zLjM1OCw3LjUtNy41ICAgcy0zLjM1Ny03LjUtNy41LTcuNWgtNy41di02MC44MzNIMjUweiIgZmlsbD0iI0ZGRkZGRiIvPgogICAgPHBhdGggZD0ibTQ2Mi41LDIxMi41Yy00LjE0MywwLTcuNSwzLjM1OC03LjUsNy41djcuNWgtNjAuODMzdi03LjVjMC00LjE0Mi0zLjM1Ny03LjUtNy41LTcuNXMtNy41LDMuMzU4LTcuNSw3LjV2Ny41aC02MC44MzR2LTcuNWMwLTQuMTQyLTMuMzU3LTcuNS03LjUtNy41cy03LjUsMy4zNTgtNy41LDcuNXY3LjVoLTM4LjMzM2MtNC4xNDMsMC03LjUsMy4zNTgtNy41LDcuNXMzLjM1Nyw3LjUgNy41LDcuNWgzOC4zMzN2Ny41YzAsNC4xNDIgMy4zNTcsNy41IDcuNSw3LjVzNy41LTMuMzU4IDcuNS03LjV2LTcuNWg2MC44MzR2Ny41YzAsNC4xNDIgMy4zNTcsNy41IDcuNSw3LjVzNy41LTMuMzU4IDcuNS03LjV2LTcuNWg2MC44MzN2Ny41YzAsNC4xNDIgMy4zNTcsNy41IDcuNSw3LjVzNy41LTMuMzU4IDcuNS03LjV2LTMwYzAtNC4xNDItMy4zNTctNy41LTcuNS03LjV6IiBmaWxsPSIjRkZGRkZGIi8+CiAgPC9nPgo8L3N2Zz4K" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="navbar-brand">Bezierove krivulje</a>
+                    </li>
+                </ul>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://www.typescriptlang.org/">Built with TypeScript</a>
+                    </li>
+                    <li>
+                        <a href="http://www.typescriptlang.org/">
+                            <img class="img-responsive" src="/Images/ms.png" style="float: right;" width="100" height="25" alt="TypeScript" />
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <br /><br />
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>O aplikaciji</h1>
+            <p>
+                Ova aplikacija je implementacija zadataka projekta iz kolegija <a href="http://nastava.foi.hr/public/course?study=2824&course=61793&academicYear=2015%2F2016">Odabrana poglavlja matematike</a>,
+                <br /> <a href="http://foi.hr">Fakultet organizacije i informatike Varazdin</a>, na temu Bezierove krivulje.
+            </p>
+            <h5>Svako kopiranje bilo kojeg dijela ove aplikacije bez dopustenja autora je zabranjeno, te podlijeze prijavi na stegovni sud.</h5>
+
+            <br />
+            <h5>
+                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQzOC41NDkgNDM4LjU0OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDM4LjU0OSA0MzguNTQ5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTQwOS4xMzIsMTE0LjU3M2MtMTkuNjA4LTMzLjU5Ni00Ni4yMDUtNjAuMTk0LTc5Ljc5OC03OS44QzI5NS43MzYsMTUuMTY2LDI1OS4wNTcsNS4zNjUsMjE5LjI3MSw1LjM2NSAgIGMtMzkuNzgxLDAtNzYuNDcyLDkuODA0LTExMC4wNjMsMjkuNDA4Yy0zMy41OTYsMTkuNjA1LTYwLjE5Miw0Ni4yMDQtNzkuOCw3OS44QzkuODAzLDE0OC4xNjgsMCwxODQuODU0LDAsMjI0LjYzICAgYzAsNDcuNzgsMTMuOTQsOTAuNzQ1LDQxLjgyNywxMjguOTA2YzI3Ljg4NCwzOC4xNjQsNjMuOTA2LDY0LjU3MiwxMDguMDYzLDc5LjIyN2M1LjE0LDAuOTU0LDguOTQ1LDAuMjgzLDExLjQxOS0xLjk5NiAgIGMyLjQ3NS0yLjI4MiwzLjcxMS01LjE0LDMuNzExLTguNTYyYzAtMC41NzEtMC4wNDktNS43MDgtMC4xNDQtMTUuNDE3Yy0wLjA5OC05LjcwOS0wLjE0NC0xOC4xNzktMC4xNDQtMjUuNDA2bC02LjU2NywxLjEzNiAgIGMtNC4xODcsMC43NjctOS40NjksMS4wOTItMTUuODQ2LDFjLTYuMzc0LTAuMDg5LTEyLjk5MS0wLjc1Ny0xOS44NDItMS45OTljLTYuODU0LTEuMjMxLTEzLjIyOS00LjA4Ni0xOS4xMy04LjU1OSAgIGMtNS44OTgtNC40NzMtMTAuMDg1LTEwLjMyOC0xMi41Ni0xNy41NTZsLTIuODU1LTYuNTdjLTEuOTAzLTQuMzc0LTQuODk5LTkuMjMzLTguOTkyLTE0LjU1OSAgIGMtNC4wOTMtNS4zMzEtOC4yMzItOC45NDUtMTIuNDE5LTEwLjg0OGwtMS45OTktMS40MzFjLTEuMzMyLTAuOTUxLTIuNTY4LTIuMDk4LTMuNzExLTMuNDI5Yy0xLjE0Mi0xLjMzMS0xLjk5Ny0yLjY2My0yLjU2OC0zLjk5NyAgIGMtMC41NzItMS4zMzUtMC4wOTgtMi40MywxLjQyNy0zLjI4OWMxLjUyNS0wLjg1OSw0LjI4MS0xLjI3Niw4LjI4LTEuMjc2bDUuNzA4LDAuODUzYzMuODA3LDAuNzYzLDguNTE2LDMuMDQyLDE0LjEzMyw2Ljg1MSAgIGM1LjYxNCwzLjgwNiwxMC4yMjksOC43NTQsMTMuODQ2LDE0Ljg0MmM0LjM4LDcuODA2LDkuNjU3LDEzLjc1NCwxNS44NDYsMTcuODQ3YzYuMTg0LDQuMDkzLDEyLjQxOSw2LjEzNiwxOC42OTksNi4xMzYgICBjNi4yOCwwLDExLjcwNC0wLjQ3NiwxNi4yNzQtMS40MjNjNC41NjUtMC45NTIsOC44NDgtMi4zODMsMTIuODQ3LTQuMjg1YzEuNzEzLTEyLjc1OCw2LjM3Ny0yMi41NTksMTMuOTg4LTI5LjQxICAgYy0xMC44NDgtMS4xNC0yMC42MDEtMi44NTctMjkuMjY0LTUuMTRjLTguNjU4LTIuMjg2LTE3LjYwNS01Ljk5Ni0yNi44MzUtMTEuMTRjLTkuMjM1LTUuMTM3LTE2Ljg5Ni0xMS41MTYtMjIuOTg1LTE5LjEyNiAgIGMtNi4wOS03LjYxNC0xMS4wODgtMTcuNjEtMTQuOTg3LTI5Ljk3OWMtMy45MDEtMTIuMzc0LTUuODUyLTI2LjY0OC01Ljg1Mi00Mi44MjZjMC0yMy4wMzUsNy41Mi00Mi42MzcsMjIuNTU3LTU4LjgxNyAgIGMtNy4wNDQtMTcuMzE4LTYuMzc5LTM2LjczMiwxLjk5Ny01OC4yNGM1LjUyLTEuNzE1LDEzLjcwNi0wLjQyOCwyNC41NTQsMy44NTNjMTAuODUsNC4yODMsMTguNzk0LDcuOTUyLDIzLjg0LDEwLjk5NCAgIGM1LjA0NiwzLjA0MSw5LjA4OSw1LjYxOCwxMi4xMzUsNy43MDhjMTcuNzA1LTQuOTQ3LDM1Ljk3Ni03LjQyMSw1NC44MTgtNy40MjFzMzcuMTE3LDIuNDc0LDU0LjgyMyw3LjQyMWwxMC44NDktNi44NDkgICBjNy40MTktNC41NywxNi4xOC04Ljc1OCwyNi4yNjItMTIuNTY1YzEwLjA4OC0zLjgwNSwxNy44MDItNC44NTMsMjMuMTM0LTMuMTM4YzguNTYyLDIxLjUwOSw5LjMyNSw0MC45MjIsMi4yNzksNTguMjQgICBjMTUuMDM2LDE2LjE4LDIyLjU1OSwzNS43ODcsMjIuNTU5LDU4LjgxN2MwLDE2LjE3OC0xLjk1OCwzMC40OTctNS44NTMsNDIuOTY2Yy0zLjksMTIuNDcxLTguOTQxLDIyLjQ1Ny0xNS4xMjUsMjkuOTc5ICAgYy02LjE5MSw3LjUyMS0xMy45MDEsMTMuODUtMjMuMTMxLDE4Ljk4NmMtOS4yMzIsNS4xNC0xOC4xODIsOC44NS0yNi44NCwxMS4xMzZjLTguNjYyLDIuMjg2LTE4LjQxNSw0LjAwNC0yOS4yNjMsNS4xNDYgICBjOS44OTQsOC41NjIsMTQuODQyLDIyLjA3NywxNC44NDIsNDAuNTM5djYwLjIzN2MwLDMuNDIyLDEuMTksNi4yNzksMy41NzIsOC41NjJjMi4zNzksMi4yNzksNi4xMzYsMi45NSwxMS4yNzYsMS45OTUgICBjNDQuMTYzLTE0LjY1Myw4MC4xODUtNDEuMDYyLDEwOC4wNjgtNzkuMjI2YzI3Ljg4LTM4LjE2MSw0MS44MjUtODEuMTI2LDQxLjgyNS0xMjguOTA2ICAgQzQzOC41MzYsMTg0Ljg1MSw0MjguNzI4LDE0OC4xNjgsNDA5LjEzMiwxMTQuNTczeiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+                <a href="http://github.com/lopac/BezierOPM">Projekt na GitHub-u</a>
+            </h5>
+
+            <h5>
+                &copy; Izradili
+                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxLjk5NyA1MS45OTciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxLjk5NyA1MS45OTc7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTUxLjkxMSwxNi4yNDJDNTEuMTUyLDcuODg4LDQ1LjIzOSwxLjgyNywzNy44MzksMS44MjdjLTQuOTMsMC05LjQ0NCwyLjY1My0xMS45ODQsNi45MDUgIGMtMi41MTctNC4zMDctNi44NDYtNi45MDYtMTEuNjk3LTYuOTA2Yy03LjM5OSwwLTEzLjMxMyw2LjA2MS0xNC4wNzEsMTQuNDE1Yy0wLjA2LDAuMzY5LTAuMzA2LDIuMzExLDAuNDQyLDUuNDc4ICBjMS4wNzgsNC41NjgsMy41NjgsOC43MjMsNy4xOTksMTIuMDEzbDE4LjExNSwxNi40MzlsMTguNDI2LTE2LjQzOGMzLjYzMS0zLjI5MSw2LjEyMS03LjQ0NSw3LjE5OS0xMi4wMTQgIEM1Mi4yMTYsMTguNTUzLDUxLjk3LDE2LjYxMSw1MS45MTEsMTYuMjQyeiIgZmlsbD0iI2VjM2EzNCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                <a href="http://lopac.github.io">Antonio Lopac</a>,
+
+                <a href="http://fb.me/daredevil1301">Marko Peranovic</a>,
+                <a href="http://fb.me/mogu.kako.hocu">Matej Milobara.</a>
+            </h5>
+        </div>
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+
+                </div>
+
+            </div>
+
+        </div>
+        <div align="justify" class="btn-group btn-group-justified">
+            <h3 align="center">
+                Odaberite zadatak:
+                <br />
+                <br />
+
+                <a class="btn btn-primary" id="task1">Zadatak 5.</a>
+                <a class="btn btn-primary" id="task2">Zadatak 6.</a>
+                <a class="btn btn-primary" id="task3">Zadatak 7.</a>
+                <a class="btn btn-primary" id="task4">Zadatak 8.</a>
+                <a class="btn btn-primary" id="task5">Zadatak 13.</a>
+                <a class="btn btn-primary" id="task6">Zadatak 14.</a>
+                <a class="btn btn-primary" id="task7">Zadatak 15.</a>
+                <a class="btn btn-primary" id="task8">Zadatak 17.</a>
+                <a class="btn btn-primary" id="task9">Zadatak 19.</a>
+            </h3>
+
+        </div>
+        <br />
+        <div id="taskContainer" class="panel panel-primary">
+
+        </div>
+        <div align="center">
+            <div id="taskCom"></div>
+            <div id="taskBtns" align="justify" class="btn-group"></div>
+        </div>
+        <br /><br />
+
+        <br />
+
+        <canvas id="canvas"></canvas>
+        <br /><br />
+        <br /><br />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.2.js" integrity="sha256-4/zUCqiq0kqxhZIyp4G0Gk+AOtCJsY1TA00k5ClsZYE=" crossorigin="anonymous"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>

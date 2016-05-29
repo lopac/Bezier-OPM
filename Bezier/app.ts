@@ -472,14 +472,11 @@ class NBezier extends Bezier {
 interface IDeCasteljau<T> {
 
     points: Array<T>;
-    resultPoints: Array<T>;
     addPointBtn: HTMLAnchorElement;
     computeBtn: HTMLAnchorElement;
     pointsCount;
     u: number;
     breakline;
-
-    addPoint(): void;
 
     showResult(rPoint: T): void;
     compute(): void;
@@ -503,7 +500,7 @@ class DeCasteljauApi {
 class DeCasteljau implements IDeCasteljau<Point> {
 
     points: Array<Point>;
-    resultPoints: Array<Point>;
+
     addPointBtn: HTMLAnchorElement;
     computeBtn: HTMLAnchorElement;
     pointsCount = 0;
@@ -515,7 +512,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
     constructor() {
 
         this.points = new Array<Point>();
-        this.resultPoints = new Array<Point>();
+      
 
         let form = document.createElement("div");
         form.className = "form-group";
@@ -558,8 +555,8 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
             this.points.push(point);
 
-            let c = this.compute();
-            console.log(JSON.stringify(c));
+          this.compute();
+        
         };
 
 
@@ -572,7 +569,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
     }
 
     showResult(rPoint: Point): void {
-        console.log(rPoint);
+       
         let pointForm = document.createElement("div");
         pointForm.className = "form-group has-success";
 
@@ -615,7 +612,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
         $.ajax({
             type: "POST",
             data: JSON.stringify(apiModel),
-            url: "../api/DeCasteljau",
+            url: "/api/DeCasteljau",
             contentType: "application/json"
         }).done(result => {
             this.showResult(new Point(result.X,result.Y));
@@ -624,25 +621,25 @@ class DeCasteljau implements IDeCasteljau<Point> {
        
     }
 
-    addPoint(nPoint: Point = null): void {
+    addPoint(): void {
 
         if (this.pointsCount !== 0) {
 
-            if (nPoint === null) {
-                let point = new Point();
 
-                point.x = Number($(`#p${this.pointsCount}x`).val());
-                point.y = Number($(`#p${this.pointsCount}y`).val());
+            let point = new Point();
 
-                this.points.push(point);
-            }
+            point.x = Number($(`#p${this.pointsCount}x`).val());
+            point.y = Number($(`#p${this.pointsCount}y`).val());
+
+            this.points.push(point);
+
         } else {
-            if (nPoint === null) {
-                this.u = Number($("#u").val());
-                if (this.u > 1) {
-                    alert("Parametar u ne smije biti veći od 1!");
-                }
+
+            this.u = Number($("#u").val());
+            if (this.u > 1) {
+                alert("Parametar u ne smije biti veći od 1!");
             }
+
         }
 
 
@@ -658,17 +655,15 @@ class DeCasteljau implements IDeCasteljau<Point> {
         inputX.id = `p${this.pointsCount}x`;
         inputX.type = "number";
         inputX.placeholder = "Unesite x..";
-        inputX.value = nPoint !== null ? nPoint.x : (Math.floor(Math.random() * 100) + 1).toString();
-        inputX.disabled = nPoint !== null;
+        inputX.value = (Math.floor(Math.random() * 100) + 1).toString();
 
 
         let inputY = document.createElement("input");
         inputY.className = "form-control";
         inputY.id = `p${this.pointsCount}y`;
         inputY.type = "number";
-        inputY.value = nPoint !== null ? nPoint.y : (Math.floor(Math.random() * 100) + 1).toString();
+        inputY.value = (Math.floor(Math.random() * 100) + 1).toString();
         inputY.placeholder = "Unesite y..";
-        inputY.disabled = nPoint !== null;
 
 
         pointForm.appendChild(formLabel);
@@ -679,19 +674,125 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
         $("#taskCom").append(pointForm).append(this.breakline);
 
-        if (nPoint === null) {
 
-            this.addPointBtn.remove();
-            this.computeBtn.remove();
-
-
-            $("#taskBtns").append(this.addPointBtn).append(this.computeBtn);
-        } else {
-            this.points.push(nPoint);
-        }
     }
 
 
+}
+
+class DeCasteljauPoint implements IDeCasteljau<Point> {
+
+    points: Array<Point>;
+    addPointBtn: HTMLAnchorElement;
+    computeBtn: HTMLAnchorElement;
+    pointsCount: number = 0;
+    u: number;
+    breakline = document.createElement("br");
+
+
+    private toFixed(n: number) {
+        return parseFloat((n).toFixed(2)).toString();
+    }
+
+
+    constructor(u:number) {
+        this.u = u;
+
+        this.addPoint(new Point(0,1));
+        this.addPoint(new Point(1,2));
+        this.addPoint(new Point(4,0));
+        this.addPoint(new Point(3,0));
+
+        this.compute();
+    }
+
+    addPoint(p: Point): void {
+
+        this.points.push(p);
+
+        let pointForm = document.createElement("div");
+        pointForm.className = "form-group";
+
+        let formLabel = document.createElement("h5");
+        formLabel.className = "control-label";
+        formLabel.innerHTML = `Točka P${this.pointsCount++}`;
+
+        let inputX = document.createElement("input");
+        inputX.className = "form-control";
+        inputX.id = `p${this.pointsCount}x`;
+        //inputX.type = "number";
+        inputX.value = p.x;
+        inputX.disabled = true;
+
+
+        let inputY = document.createElement("input");
+        inputY.className = "form-control";
+        inputY.id = `p${this.pointsCount}y`;
+        //inputY.type = "number";
+        inputX.value = p.y;
+        inputX.disabled = true;
+
+
+        pointForm.appendChild(formLabel);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(inputX);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(inputY);
+
+        $("#taskCom").append(pointForm).append(this.breakline);
+    }
+
+    showResult(rPoint: Point): void {
+
+        let pointForm = document.createElement("div");
+        pointForm.className = "form-group has-success";
+
+        let formLabel = document.createElement("h5");
+        formLabel.className = "control-label";
+        formLabel.innerHTML = "Rezultantna tocka";
+
+        let x = document.createElement("input");
+        x.className = "form-control";
+        x.disabled = true;
+        x.type = "number";
+        x.value = this.toFixed(rPoint.x);
+
+        let y = document.createElement("input");
+        y.className = "form-control";
+        y.disabled = true;
+        y.type = "number";
+        y.value = this.toFixed(rPoint.y);
+
+
+        pointForm.appendChild(formLabel);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(x);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(y);
+
+        if (this.addPointBtn != null && this.computeBtn != null) {
+            this.addPointBtn.remove();
+            this.computeBtn.remove();
+        }
+
+        $("#taskCom").append(pointForm).append(this.breakline);
+        $("#taskBtns").empty();
+    }
+
+    compute(): void {
+        let apiModel = new DeCasteljauApi(this.u, this.points);
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(apiModel),
+            url: "/api/DeCasteljau",
+            contentType: "application/json"
+        }).done(result => {
+            this.showResult(new Point(result.X, result.Y));
+        });
+    }
+
+ 
 }
 
 class DeCasteljauVector implements IDeCasteljau<Vector> {
@@ -909,14 +1010,33 @@ class CanvasUI {
 
     }
 
+
+    
+
     private static clearCanvas() {
         this.canvas.width = this.canvas.width;
     }
+
+
+}
+
+class IsMobile {
+
+    public static any() {
+        return (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/Opera Mini/i) || navigator.userAgent.match(/IEMobile/i));
+    }
+
 }
 
 
 window.onload = () => {
 
+
+    if (IsMobile.any()) {
+        $(".navbar-collapse collapse").remove();
+        $("#logo").remove();
+        $(".navbar-header").append('<a href="#" class="navbar-brand">Bezierove krivulje</a>');
+    }
 
     $("#task1")
         .click(() => {
@@ -951,7 +1071,7 @@ window.onload = () => {
                     "Implementirajte algoritam na računalu koji će na ulazu imati kontrolne točke Bezierove krivulje q i parametar u e [0,1], a na izlazu će dati q(u). ");
 
 
-            let deCasteljau = new DeCasteljau();
+            new DeCasteljau();
 
 
         });
@@ -980,34 +1100,34 @@ window.onload = () => {
             let o1 = document.createElement("option");
             o1.innerHTML = "zadatak 3. u = 1/2";
 
-            //o1.onclick = () => {
-            //    let dc = new DeCasteljau(1 / 2);
-            //};
+            o1.onclick = () => {
+                new DeCasteljauPoint(1 / 2);
+            };
 
-            //let o2 = document.createElement("option");
-            //o2.innerHTML = "zadatak 3. u = 3/4";
-            //o2.onclick = () => {
-            //    let dc = new DeCasteljau(3 / 4);
-            //};
+            let o2 = document.createElement("option");
+            o2.innerHTML = "zadatak 3. u = 3/4";
 
-            //let o3 = document.createElement("option");
-            //o3.innerHTML = "zadatak 4. u = 1/2";
-            //o3.onclick = () => {
+            o2.onclick = () => {
+                new DeCasteljauPoint(3 / 4);
+            };
 
-            //    let dc = new DeCasteljauVector(1 / 2);
-            //};
+            let o3 = document.createElement("option");
+            o3.innerHTML = "zadatak 4. u = 1/2";
+            o3.onclick = () => {
+                new DeCasteljauVector(1 / 2);
+            };
 
-            //let o4 = document.createElement("option");
-            //o4.innerHTML = "zadatak 4. u = 3/4";
+            let o4 = document.createElement("option");
+            o4.innerHTML = "zadatak 4. u = 3/4";
 
-            //o4.onclick = () => {
-            //    let dcV = new DeCasteljauVector(3 / 4);
-            //};
+            o4.onclick = () => {
+                new DeCasteljauVector(3 / 4);
+            };
 
 
             $("#taskCom").append(label).append(select);
 
-            //$("#select").append(o1).append(o2).append(o3).append(o4);
+            $("#select").append(o1).append(o2).append(o3).append(o4);
 
         });
 

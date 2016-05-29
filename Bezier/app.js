@@ -348,7 +348,6 @@ var DeCasteljau = (function () {
         this.u = 0;
         this.breakline = document.createElement("br");
         this.points = new Array();
-        this.resultPoints = new Array();
         var form = document.createElement("div");
         form.className = "form-group";
         var label = document.createElement("h5");
@@ -375,8 +374,7 @@ var DeCasteljau = (function () {
             point.x = Number($("#p" + _this.pointsCount + "x").val());
             point.y = Number($("#p" + _this.pointsCount + "y").val());
             _this.points.push(point);
-            var c = _this.compute();
-            console.log(JSON.stringify(c));
+            _this.compute();
         };
         $("#taskBtns").append(this.addPointBtn);
     }
@@ -384,7 +382,6 @@ var DeCasteljau = (function () {
         return parseFloat((n).toFixed(2)).toString();
     };
     DeCasteljau.prototype.showResult = function (rPoint) {
-        console.log(rPoint);
         var pointForm = document.createElement("div");
         pointForm.className = "form-group has-success";
         var formLabel = document.createElement("h5");
@@ -418,28 +415,23 @@ var DeCasteljau = (function () {
         $.ajax({
             type: "POST",
             data: JSON.stringify(apiModel),
-            url: "../api/DeCasteljau",
+            url: "/api/DeCasteljau",
             contentType: "application/json"
         }).done(function (result) {
             _this.showResult(new Point(result.X, result.Y));
         });
     };
-    DeCasteljau.prototype.addPoint = function (nPoint) {
-        if (nPoint === void 0) { nPoint = null; }
+    DeCasteljau.prototype.addPoint = function () {
         if (this.pointsCount !== 0) {
-            if (nPoint === null) {
-                var point = new Point();
-                point.x = Number($("#p" + this.pointsCount + "x").val());
-                point.y = Number($("#p" + this.pointsCount + "y").val());
-                this.points.push(point);
-            }
+            var point = new Point();
+            point.x = Number($("#p" + this.pointsCount + "x").val());
+            point.y = Number($("#p" + this.pointsCount + "y").val());
+            this.points.push(point);
         }
         else {
-            if (nPoint === null) {
-                this.u = Number($("#u").val());
-                if (this.u > 1) {
-                    alert("Parametar u ne smije biti veći od 1!");
-                }
+            this.u = Number($("#u").val());
+            if (this.u > 1) {
+                alert("Parametar u ne smije biti veći od 1!");
             }
         }
         var pointForm = document.createElement("div");
@@ -452,31 +444,103 @@ var DeCasteljau = (function () {
         inputX.id = "p" + this.pointsCount + "x";
         inputX.type = "number";
         inputX.placeholder = "Unesite x..";
-        inputX.value = nPoint !== null ? nPoint.x : (Math.floor(Math.random() * 100) + 1).toString();
-        inputX.disabled = nPoint !== null;
+        inputX.value = (Math.floor(Math.random() * 100) + 1).toString();
         var inputY = document.createElement("input");
         inputY.className = "form-control";
         inputY.id = "p" + this.pointsCount + "y";
         inputY.type = "number";
-        inputY.value = nPoint !== null ? nPoint.y : (Math.floor(Math.random() * 100) + 1).toString();
+        inputY.value = (Math.floor(Math.random() * 100) + 1).toString();
         inputY.placeholder = "Unesite y..";
-        inputY.disabled = nPoint !== null;
         pointForm.appendChild(formLabel);
         pointForm.appendChild(this.breakline);
         pointForm.appendChild(inputX);
         pointForm.appendChild(this.breakline);
         pointForm.appendChild(inputY);
         $("#taskCom").append(pointForm).append(this.breakline);
-        if (nPoint === null) {
-            this.addPointBtn.remove();
-            this.computeBtn.remove();
-            $("#taskBtns").append(this.addPointBtn).append(this.computeBtn);
-        }
-        else {
-            this.points.push(nPoint);
-        }
     };
     return DeCasteljau;
+}());
+var DeCasteljauPoint = (function () {
+    function DeCasteljauPoint(u) {
+        this.pointsCount = 0;
+        this.breakline = document.createElement("br");
+        this.u = u;
+        this.addPoint(new Point(0, 1));
+        this.addPoint(new Point(1, 2));
+        this.addPoint(new Point(4, 0));
+        this.addPoint(new Point(3, 0));
+        this.compute();
+    }
+    DeCasteljauPoint.prototype.toFixed = function (n) {
+        return parseFloat((n).toFixed(2)).toString();
+    };
+    DeCasteljauPoint.prototype.addPoint = function (p) {
+        this.points.push(p);
+        var pointForm = document.createElement("div");
+        pointForm.className = "form-group";
+        var formLabel = document.createElement("h5");
+        formLabel.className = "control-label";
+        formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
+        var inputX = document.createElement("input");
+        inputX.className = "form-control";
+        inputX.id = "p" + this.pointsCount + "x";
+        //inputX.type = "number";
+        inputX.value = p.x;
+        inputX.disabled = true;
+        var inputY = document.createElement("input");
+        inputY.className = "form-control";
+        inputY.id = "p" + this.pointsCount + "y";
+        //inputY.type = "number";
+        inputX.value = p.y;
+        inputX.disabled = true;
+        pointForm.appendChild(formLabel);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(inputX);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(inputY);
+        $("#taskCom").append(pointForm).append(this.breakline);
+    };
+    DeCasteljauPoint.prototype.showResult = function (rPoint) {
+        var pointForm = document.createElement("div");
+        pointForm.className = "form-group has-success";
+        var formLabel = document.createElement("h5");
+        formLabel.className = "control-label";
+        formLabel.innerHTML = "Rezultantna tocka";
+        var x = document.createElement("input");
+        x.className = "form-control";
+        x.disabled = true;
+        x.type = "number";
+        x.value = this.toFixed(rPoint.x);
+        var y = document.createElement("input");
+        y.className = "form-control";
+        y.disabled = true;
+        y.type = "number";
+        y.value = this.toFixed(rPoint.y);
+        pointForm.appendChild(formLabel);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(x);
+        pointForm.appendChild(this.breakline);
+        pointForm.appendChild(y);
+        if (this.addPointBtn != null && this.computeBtn != null) {
+            this.addPointBtn.remove();
+            this.computeBtn.remove();
+        }
+        $("#taskCom").append(pointForm).append(this.breakline);
+        $("#taskBtns").empty();
+    };
+    DeCasteljauPoint.prototype.compute = function () {
+        var _this = this;
+        var apiModel = new DeCasteljauApi(this.u, this.points);
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(apiModel),
+            url: "/api/DeCasteljau",
+            contentType: "application/json"
+        }).done(function (result) {
+            _this.showResult(new Point(result.X, result.Y));
+        });
+    };
+    return DeCasteljauPoint;
 }());
 var DeCasteljauVector = (function () {
     function DeCasteljauVector(uVal) {
@@ -633,7 +697,20 @@ var CanvasUI = (function () {
     CanvasUI.canvas = document.getElementById("canvas");
     return CanvasUI;
 }());
+var IsMobile = (function () {
+    function IsMobile() {
+    }
+    IsMobile.any = function () {
+        return (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/Opera Mini/i) || navigator.userAgent.match(/IEMobile/i));
+    };
+    return IsMobile;
+}());
 window.onload = function () {
+    if (IsMobile.any()) {
+        $(".navbar-collapse collapse").remove();
+        $("#logo").remove();
+        $(".navbar-header").append('<a href="#" class="navbar-brand">Bezierove krivulje</a>');
+    }
     $("#task1")
         .click(function () {
         CanvasUI.refresh($("#task1"));
@@ -655,7 +732,7 @@ window.onload = function () {
             .html(function () {
             return "Implementirajte algoritam na računalu koji će na ulazu imati kontrolne točke Bezierove krivulje q i parametar u e [0,1], a na izlazu će dati q(u). ";
         });
-        var deCasteljau = new DeCasteljau();
+        new DeCasteljau();
     });
     $("#task3")
         .click(function () {
@@ -675,26 +752,26 @@ window.onload = function () {
         select.id = "select";
         var o1 = document.createElement("option");
         o1.innerHTML = "zadatak 3. u = 1/2";
-        //o1.onclick = () => {
-        //    let dc = new DeCasteljau(1 / 2);
-        //};
-        //let o2 = document.createElement("option");
-        //o2.innerHTML = "zadatak 3. u = 3/4";
-        //o2.onclick = () => {
-        //    let dc = new DeCasteljau(3 / 4);
-        //};
-        //let o3 = document.createElement("option");
-        //o3.innerHTML = "zadatak 4. u = 1/2";
-        //o3.onclick = () => {
-        //    let dc = new DeCasteljauVector(1 / 2);
-        //};
-        //let o4 = document.createElement("option");
-        //o4.innerHTML = "zadatak 4. u = 3/4";
-        //o4.onclick = () => {
-        //    let dcV = new DeCasteljauVector(3 / 4);
-        //};
+        o1.onclick = function () {
+            new DeCasteljauPoint(1 / 2);
+        };
+        var o2 = document.createElement("option");
+        o2.innerHTML = "zadatak 3. u = 3/4";
+        o2.onclick = function () {
+            new DeCasteljauPoint(3 / 4);
+        };
+        var o3 = document.createElement("option");
+        o3.innerHTML = "zadatak 4. u = 1/2";
+        o3.onclick = function () {
+            new DeCasteljauVector(1 / 2);
+        };
+        var o4 = document.createElement("option");
+        o4.innerHTML = "zadatak 4. u = 3/4";
+        o4.onclick = function () {
+            new DeCasteljauVector(3 / 4);
+        };
         $("#taskCom").append(label).append(select);
-        //$("#select").append(o1).append(o2).append(o3).append(o4);
+        $("#select").append(o1).append(o2).append(o3).append(o4);
     });
     $("#task4")
         .click(function () {
