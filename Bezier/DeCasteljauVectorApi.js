@@ -5,4 +5,3 @@ var DeCasteljauVectorApi = (function () {
     }
     return DeCasteljauVectorApi;
 }());
-//# sourceMappingURL=DeCasteljauVectorApi.js.map

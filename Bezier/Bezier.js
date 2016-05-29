@@ -115,4 +115,3 @@ var Bezier = (function () {
     };
     return Bezier;
 }());
-//# sourceMappingURL=Bezier.js.map

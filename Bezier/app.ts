@@ -21,9 +21,7 @@
                     "<br/> toga nacrta Bezierova krivulja kojoj su to kontrolne tocke. Isto tako mora biti omoguceno korisniku" +
                     "<br/>da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. " +
                     "<br/>Kontrolne tocke neka budu redom spojene crtkanim linijama.");
-
-            new QuadriaticBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
-
+            let quadriaticBezier = new QuadriaticBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
         });
 
     $("#task2")
@@ -37,11 +35,7 @@
             $("#taskDescription")
                 .html(() =>
                     "Implementirajte algoritam na računalu koji će na ulazu imati kontrolne točke Bezierove krivulje q i parametar u e [0,1], a na izlazu će dati q(u). ");
-
-
-            new DeCasteljau();
-
-
+            let deCasteljau = new DeCasteljau();
         });
 
     $("#task3")
@@ -87,9 +81,7 @@
                 $("#taskCom").append(label).append(select);
 
                 $("#select").append(o1).append(o2).append(o3).append(o4);
-
-
-                new DeCasteljauPoint(1 / 2);
+                let deCasteljauPoint = new DeCasteljauPoint(1 / 2);
             };
 
 
@@ -101,8 +93,7 @@
                 $("#taskCom").append(label).append(select);
 
                 $("#select").append(o1).append(o2).append(o3).append(o4);
-
-                new DeCasteljauPoint(3 / 4);
+                let deCasteljauPoint = new DeCasteljauPoint(3 / 4);
             };
 
 
@@ -113,8 +104,7 @@
                 $("#taskCom").append(label).append(select);
 
                 $("#select").append(o1).append(o2).append(o3).append(o4);
-
-                new DeCasteljauVector(1 / 2);
+                let deCasteljauVector = new DeCasteljauVector(1 / 2);
             };
 
 
@@ -125,8 +115,7 @@
                 $("#taskCom").append(label).append(select);
 
                 $("#select").append(o1).append(o2).append(o3).append(o4);
-
-                let a = new DeCasteljauVector(3 / 4);
+                let deCasteljauVector = new DeCasteljauVector(3 / 4);
             };
 
 
@@ -172,6 +161,17 @@
     $("#task6")
         .click(() => {
             CanvasUi.refresh($("#task6"));
+
+            $("#taskTitle").html(() => "Zadatak 14.");
+
+            $("#taskDescription")
+                .html(() =>
+                    "Opisite De Casteljaunov algoritam za izracunavanje vrijednosti Bezierove krivulje stupnja k u proizvoljnoj tocki i dajte geometrijsku interpretaciju tog algoritma.Dokazite ispravnost algoritma.Objasnite koja je prednost takvog nacina racunanja pred standardnim nacinom.Implementirajte taj algoritam na racunalu koji ce na ulazu imati kontrolne tocke Bezierove krivulje q i parametar u ∈[0, 1], a na izlazu ce dati q(u)."
+                );
+
+            let deCasteljauPoint = new DeCasteljauPoint(0.2);
+
+
 
         });
 

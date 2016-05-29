@@ -4,10 +4,21 @@ var DeCasteljauPoint = (function () {
         this.breakline = document.createElement("br");
         this.u = u;
         this.points = new Array();
-        this.addPoint(new Point(0, 1));
-        this.addPoint(new Point(1, 2));
-        this.addPoint(new Point(4, 0));
-        this.addPoint(new Point(3, 0));
+        if (this.u === 0.2) {
+            this.addPoint(new Point(1, 1));
+            this.addPoint(new Point(1.75, 3));
+            this.addPoint(new Point(3, 1));
+            this.addPoint(new Point(4, 5 / 2));
+            this.addPoint(new Point(2, 3.2));
+            this.addPoint(new Point(3, 4.7));
+            this.addPoint(new Point(4, 5.1));
+        }
+        else {
+            this.addPoint(new Point(0, 1));
+            this.addPoint(new Point(1, 2));
+            this.addPoint(new Point(4, 0));
+            this.addPoint(new Point(3, 0));
+        }
         this.compute();
     }
     DeCasteljauPoint.prototype.toFixed = function (n) {
@@ -20,7 +31,7 @@ var DeCasteljauPoint = (function () {
         pointForm.id = "pointForm";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "To\uFFFDka P" + this.pointsCount++;
+        formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
         var inputX = document.createElement("input");
         inputX.className = "form-control";
         inputX.value = p.x;
@@ -78,4 +89,3 @@ var DeCasteljauPoint = (function () {
     };
     return DeCasteljauPoint;
 }());
-//# sourceMappingURL=DeCasteljauPoint.js.map

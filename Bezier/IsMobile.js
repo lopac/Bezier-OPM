@@ -6,4 +6,3 @@ var IsMobile = (function () {
     };
     return IsMobile;
 }());
-//# sourceMappingURL=IsMobile.js.map

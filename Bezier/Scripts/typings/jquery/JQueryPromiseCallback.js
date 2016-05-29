@@ -1,1 +1,0 @@
-//# sourceMappingURL=JQueryPromiseCallback.js.map

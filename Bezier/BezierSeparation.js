@@ -89,4 +89,3 @@ var BezierSeparation = (function (_super) {
     };
     return BezierSeparation;
 }(Bezier));
-//# sourceMappingURL=BezierSeparation.js.map

@@ -37,4 +37,3 @@ var CanvasUi = (function () {
     CanvasUi.canvas = document.getElementById("canvas");
     return CanvasUi;
 }());
-//# sourceMappingURL=CanvasUI.js.map
