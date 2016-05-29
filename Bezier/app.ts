@@ -4,7 +4,7 @@ class Point {
     x;
     y;
 
-    constructor(x: number = 0, y: number = 0) {
+    constructor(x: number = null, y: number = null) {
         this.x = x;
         this.y = y;
     }
@@ -685,7 +685,7 @@ class DeCasteljauPoint implements IDeCasteljau<Point> {
     points: Array<Point>;
     addPointBtn: HTMLAnchorElement;
     computeBtn: HTMLAnchorElement;
-    pointsCount: number = 0;
+    pointsCount = 0;
     u: number;
     breakline = document.createElement("br");
 
@@ -695,8 +695,9 @@ class DeCasteljauPoint implements IDeCasteljau<Point> {
     }
 
 
-    constructor(u:number) {
+    constructor(u: number) {
         this.u = u;
+        this.points = new Array<Point>();
 
         this.addPoint(new Point(0,1));
         this.addPoint(new Point(1,2));
@@ -712,25 +713,24 @@ class DeCasteljauPoint implements IDeCasteljau<Point> {
 
         let pointForm = document.createElement("div");
         pointForm.className = "form-group";
+        pointForm.id = "pointForm";
 
         let formLabel = document.createElement("h5");
         formLabel.className = "control-label";
         formLabel.innerHTML = `Točka P${this.pointsCount++}`;
 
+      
+
         let inputX = document.createElement("input");
         inputX.className = "form-control";
-        inputX.id = `p${this.pointsCount}x`;
-        //inputX.type = "number";
         inputX.value = p.x;
         inputX.disabled = true;
 
 
         let inputY = document.createElement("input");
         inputY.className = "form-control";
-        inputY.id = `p${this.pointsCount}y`;
-        //inputY.type = "number";
-        inputX.value = p.y;
-        inputX.disabled = true;
+        inputY.value = p.y;
+        inputY.disabled = true;
 
 
         pointForm.appendChild(formLabel);
@@ -1100,30 +1100,69 @@ window.onload = () => {
             let o1 = document.createElement("option");
             o1.innerHTML = "zadatak 3. u = 1/2";
 
-            o1.onclick = () => {
-                new DeCasteljauPoint(1 / 2);
-            };
-
             let o2 = document.createElement("option");
             o2.innerHTML = "zadatak 3. u = 3/4";
 
-            o2.onclick = () => {
-                new DeCasteljauPoint(3 / 4);
-            };
 
             let o3 = document.createElement("option");
             o3.innerHTML = "zadatak 4. u = 1/2";
-            o3.onclick = () => {
-                new DeCasteljauVector(1 / 2);
-            };
 
             let o4 = document.createElement("option");
             o4.innerHTML = "zadatak 4. u = 3/4";
 
+            
+
+            o1.onclick = () => {
+                $("#taskCom").empty();
+
+
+                $("#taskCom").append(label).append(select);
+
+                $("#select").append(o1).append(o2).append(o3).append(o4);
+
+
+                new DeCasteljauPoint(1 / 2);
+            };
+
+        
+
+            o2.onclick = () => {
+                $("#taskCom").empty();
+
+
+                $("#taskCom").append(label).append(select);
+
+                $("#select").append(o1).append(o2).append(o3).append(o4);
+
+                new DeCasteljauPoint(3 / 4);
+            };
+
+         
+            o3.onclick = () => {
+                $("#taskCom").empty();
+
+
+                $("#taskCom").append(label).append(select);
+
+                $("#select").append(o1).append(o2).append(o3).append(o4);
+
+                new DeCasteljauVector(1 / 2);
+            };
+
+        
             o4.onclick = () => {
+                $("#taskCom").empty();
+
+
+                $("#taskCom").append(label).append(select);
+
+                $("#select").append(o1).append(o2).append(o3).append(o4);
+
                 new DeCasteljauVector(3 / 4);
             };
 
+
+            $("#taskCom").empty();
 
             $("#taskCom").append(label).append(select);
 

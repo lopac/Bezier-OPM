@@ -6,8 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Point = (function () {
     function Point(x, y) {
-        if (x === void 0) { x = 0; }
-        if (y === void 0) { y = 0; }
+        if (x === void 0) { x = null; }
+        if (y === void 0) { y = null; }
         this.x = x;
         this.y = y;
     }
@@ -465,6 +465,7 @@ var DeCasteljauPoint = (function () {
         this.pointsCount = 0;
         this.breakline = document.createElement("br");
         this.u = u;
+        this.points = new Array();
         this.addPoint(new Point(0, 1));
         this.addPoint(new Point(1, 2));
         this.addPoint(new Point(4, 0));
@@ -478,21 +479,18 @@ var DeCasteljauPoint = (function () {
         this.points.push(p);
         var pointForm = document.createElement("div");
         pointForm.className = "form-group";
+        pointForm.id = "pointForm";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
         formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
         var inputX = document.createElement("input");
         inputX.className = "form-control";
-        inputX.id = "p" + this.pointsCount + "x";
-        //inputX.type = "number";
         inputX.value = p.x;
         inputX.disabled = true;
         var inputY = document.createElement("input");
         inputY.className = "form-control";
-        inputY.id = "p" + this.pointsCount + "y";
-        //inputY.type = "number";
-        inputX.value = p.y;
-        inputX.disabled = true;
+        inputY.value = p.y;
+        inputY.disabled = true;
         pointForm.appendChild(formLabel);
         pointForm.appendChild(this.breakline);
         pointForm.appendChild(inputX);
@@ -752,24 +750,37 @@ window.onload = function () {
         select.id = "select";
         var o1 = document.createElement("option");
         o1.innerHTML = "zadatak 3. u = 1/2";
-        o1.onclick = function () {
-            new DeCasteljauPoint(1 / 2);
-        };
         var o2 = document.createElement("option");
         o2.innerHTML = "zadatak 3. u = 3/4";
-        o2.onclick = function () {
-            new DeCasteljauPoint(3 / 4);
-        };
         var o3 = document.createElement("option");
         o3.innerHTML = "zadatak 4. u = 1/2";
-        o3.onclick = function () {
-            new DeCasteljauVector(1 / 2);
-        };
         var o4 = document.createElement("option");
         o4.innerHTML = "zadatak 4. u = 3/4";
+        o1.onclick = function () {
+            $("#taskCom").empty();
+            $("#taskCom").append(label).append(select);
+            $("#select").append(o1).append(o2).append(o3).append(o4);
+            new DeCasteljauPoint(1 / 2);
+        };
+        o2.onclick = function () {
+            $("#taskCom").empty();
+            $("#taskCom").append(label).append(select);
+            $("#select").append(o1).append(o2).append(o3).append(o4);
+            new DeCasteljauPoint(3 / 4);
+        };
+        o3.onclick = function () {
+            $("#taskCom").empty();
+            $("#taskCom").append(label).append(select);
+            $("#select").append(o1).append(o2).append(o3).append(o4);
+            new DeCasteljauVector(1 / 2);
+        };
         o4.onclick = function () {
+            $("#taskCom").empty();
+            $("#taskCom").append(label).append(select);
+            $("#select").append(o1).append(o2).append(o3).append(o4);
             new DeCasteljauVector(3 / 4);
         };
+        $("#taskCom").empty();
         $("#taskCom").append(label).append(select);
         $("#select").append(o1).append(o2).append(o3).append(o4);
     });
