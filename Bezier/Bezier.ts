@@ -124,7 +124,7 @@ abstract class Bezier implements IBezier, ICanvas {
                     this.mouse.x,
                     this.mouse.y
                 );
-
+                console.log(JSON.stringify(newPoint));
 
                 if (this.getSelectedPointIndex() == null) {
                     this.createPoint(newPoint);

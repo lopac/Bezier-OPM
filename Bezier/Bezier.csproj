@@ -196,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="BezierLifting.ts" />
     <TypeScriptCompile Include="Point.ts" />
     <TypeScriptCompile Include="Bezier.ts" />
     <TypeScriptCompile Include="BezierSeparation.ts" />

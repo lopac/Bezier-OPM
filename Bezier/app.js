@@ -110,8 +110,31 @@ window.onload = function () {
         });
         var deCasteljauPoint = new DeCasteljauPoint(0.2);
     });
+    $("#task7")
+        .click(function () {
+        CanvasUi.refresh($("#task7"));
+        $("#taskTitle").html(function () { return "Zadatak 17."; });
+        $("#taskDescription").html(function () { return "Napravite na računalu program koji će nacrtati dvije Bezierove krivulje stupnja tri zajedno s njihovim kontrolnim točkama tako da druga krivulja ima početak u točki u kojoj je prva završila. Program neka bude interaktivan tako da je moguće mišem mijenjati kontrolne točke kako bi se dobivali različiti oblici tih krivulja. Probajte micanjem kontrolnih točaka dobiti G1 odnosno C 1 neprekidnu krivulju. Olakšajte korisniku dobivanje tih neprekidnosti direktnim klikom na određenu tipku koja će o tome brinuti"; });
+        var bS = new BezierSeparation(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
+    });
+    $("#task8")
+        .click(function () {
+        CanvasUi.refresh($("#task8"));
+        $("#taskTitle").html(function () { return "Zadatak 19., k = 2"; });
+        $("#taskDescription")
+            .html(function () {
+            return "Napisite program koji ce za danu Bezierovu krivulju stupnja k zadanu svojim kontrolnim tockama prikazati i kontrolne tocke koje ce tu istu krivulju reprezentirati kao Bezierovu krivulju stupnja k + 1. Kontrolne tocke koje pripadaju razlicitim skupinama neka budu razlicito obojane. Tocke iz pojedinih skupina neka redom budu spojene isprekidanim linijama. Program mora korisniku dozvoliti mijenjanje polozaja kontrolnih tocaka. Program napravite za k = 2 i k = 3.";
+        });
+        var bezierLifting = new BezierLifting(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 3);
+    });
     $("#task9")
         .click(function () {
         CanvasUi.refresh($("#task9"));
+        $("#taskTitle").html(function () { return "Zadatak 19., k = 3"; });
+        $("#taskDescription")
+            .html(function () {
+            return "Napisite program koji ce za danu Bezierovu krivulju stupnja k zadanu svojim kontrolnim tockama prikazati i kontrolne tocke koje ce tu istu krivulju reprezentirati kao Bezierovu krivulju stupnja k + 1. Kontrolne tocke koje pripadaju razlicitim skupinama neka budu razlicito obojane. Tocke iz pojedinih skupina neka redom budu spojene isprekidanim linijama. Program mora korisniku dozvoliti mijenjanje polozaja kontrolnih tocaka. Program napravite za k = 2 i k = 3.";
+        });
+        var bezierLifting = new BezierLifting(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
     });
 };

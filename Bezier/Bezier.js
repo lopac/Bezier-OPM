@@ -16,6 +16,7 @@ var Bezier = (function () {
             _this.mouse.x = event.offsetX || (event.layerX - canvas.offsetLeft);
             _this.mouse.y = event.offsetY || (event.layerY - canvas.offsetTop);
             var newPoint = new Point(_this.mouse.x, _this.mouse.y);
+            console.log(JSON.stringify(newPoint));
             if (_this.getSelectedPointIndex() == null) {
                 _this.createPoint(newPoint);
             }

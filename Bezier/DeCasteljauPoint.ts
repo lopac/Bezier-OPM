@@ -17,6 +17,29 @@ class DeCasteljauPoint implements IDeCasteljau<Point> {
         this.u = u;
         this.points = new Array<Point>();
 
+        let form = document.createElement("div");
+        form.className = "form-group";
+
+        let label = document.createElement("h5");
+        label.className = "control-label";
+        label.innerHTML = "U";
+
+        let input = document.createElement("input");
+        input.className = "form-control";
+        input.id = "u";
+        input.disabled = true;
+        input.type = "number";
+        input.value = this.u.toString();
+
+
+
+        form.appendChild(label);
+
+        form.appendChild(input);
+
+        $("#taskCom").css("width", 200).append(form).append(this.breakline);
+
+
         if (this.u === 0.2) {
 
             this.addPoint(new Point(1, 1));
