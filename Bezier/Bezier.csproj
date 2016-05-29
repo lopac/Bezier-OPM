@@ -145,7 +145,6 @@
     <Content Include="Views\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\bezier-opm %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\bezier-opm.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -158,12 +157,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DeCasteljauController.cs" />
+    <Compile Include="Controllers\DeCasteljauVectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DeCasteljau.cs" />
+    <Compile Include="Models\DeCasteljauVector.cs" />
     <Compile Include="Models\Point.cs" />
+    <Compile Include="Models\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,10 +193,52 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="TypeScript\Interfaces\" />
+    <Folder Include="TypeScript\Models\" />
+    <Folder Include="Views\DeCasteljauVector\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="Point.ts" />
+    <TypeScriptCompile Include="Bezier.ts" />
+    <TypeScriptCompile Include="BezierSeparation.ts" />
+    <TypeScriptCompile Include="CanvasUI.ts" />
+    <TypeScriptCompile Include="DeCasteljau.ts" />
+    <TypeScriptCompile Include="DeCasteljauApi.ts" />
+    <TypeScriptCompile Include="DeCasteljauPoint.ts" />
+    <TypeScriptCompile Include="DeCasteljauVector.ts" />
+    <TypeScriptCompile Include="DeCasteljauVectorApi.ts" />
+    <TypeScriptCompile Include="IBezier.ts" />
+    <TypeScriptCompile Include="ICanvas.ts" />
+    <TypeScriptCompile Include="IDeCasteljau.ts" />
+    <TypeScriptCompile Include="IsMobile.ts" />
+    <TypeScriptCompile Include="Mouse.ts" />
+    <TypeScriptCompile Include="NBezier.ts" />
+    <TypeScriptCompile Include="QuadriaticBezier.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\BaseJQueryEventObject.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryAjaxSettings.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryAnimationOptions.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryCallback.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryCoordinates.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryDeferred.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryEasingFunction.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryEasingFunctions.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryEventConstructor.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryEventObject.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryGenericPromise.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryInputEventObject.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryKeyEventObject.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryMouseEventObject.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryParam.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryPromise.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryPromiseCallback.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryPromiseOperator.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQuerySerializeArrayElement.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryStatic.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQuerySupport.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\JQueryXHR.ts" />
+    <TypeScriptCompile Include="Vector.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
