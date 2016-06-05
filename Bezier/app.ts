@@ -1,5 +1,6 @@
 ﻿window.onload = () => {
 
+    $("#taskContainer").hide();
 
     if (IsMobile.any()) {
         $(".navbar-collapse collapse").remove();

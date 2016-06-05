@@ -97,7 +97,7 @@ class DeCasteljauVector implements IDeCasteljau<Vector> {
 
     compute(): void {
 
-        let apiModel = new DeCasteljauVectorApi(this.u, this.points);
+        let apiModel = new DeCasteljauVectorVM(this.u, this.points);
 
         $.ajax({
             type: "POST",

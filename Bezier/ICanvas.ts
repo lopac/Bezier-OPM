@@ -5,7 +5,7 @@ interface ICanvas {
     canvasBackground: HTMLImageElement;
 
     clearCanvas(): void;
-    initializeCanvas(width: number, height: number, canvas: HTMLCanvasElement): void;
+    initializeCanvas(canvas: HTMLCanvasElement): void;
     createPoint(point: Point);
     removePoint(selectedPoint: number): void;
     getSelectedPointIndex(): number;

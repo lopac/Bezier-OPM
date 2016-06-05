@@ -5,11 +5,11 @@ var Bezier = (function () {
         this.points = new Array();
         this.mouse = new Mouse();
         this.canvasBackground = new Image();
-        this.canvasBackground.src = "/Images/canvasBg.png";
+        this.canvasBackground.src = "/Images/greyzz.png";
         this.pointsCount = pointsCount;
-        this.initializeCanvas(width, height, canvas);
+        this.initializeCanvas(canvas);
         this.canvasBackground.onload = function () {
-            _this.initializeCanvas(width, height, canvas);
+            _this.initializeCanvas(canvas);
         };
         this.clearCanvas();
         this.canvas.addEventListener("dblclick", function (event) {
@@ -74,7 +74,7 @@ var Bezier = (function () {
         this.context.stroke();
     };
     Bezier.prototype.clearCanvas = function () {
-        this.initializeCanvas(this.canvas.width, this.canvas.height, this.canvas);
+        this.initializeCanvas(this.canvas);
     };
     Bezier.prototype.renderPoints = function () {
         this.clearCanvas();
@@ -90,13 +90,13 @@ var Bezier = (function () {
         this.points.push(point);
         this.renderPoints();
     };
-    Bezier.prototype.initializeCanvas = function (width, height, canvas) {
+    Bezier.prototype.initializeCanvas = function (canvas) {
         this.canvas = canvas;
-        this.canvas.width = width;
-        this.canvas.height = height;
+        this.canvas.width = $("#canvas").width();
+        this.canvas.height = 800;
         this.context = canvas.getContext("2d");
         this.context.fillStyle = this.context.createPattern(this.canvasBackground, "repeat");
-        this.context.fillRect(0, 0, width, height);
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     };
     Bezier.prototype.getSelectedPointIndex = function () {
         var selected = null;
@@ -116,4 +116,3 @@ var Bezier = (function () {
     };
     return Bezier;
 }());
-//# sourceMappingURL=Bezier.js.map

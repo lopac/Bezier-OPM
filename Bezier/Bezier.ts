@@ -44,7 +44,7 @@ abstract class Bezier implements IBezier, ICanvas {
     }
 
     clearCanvas(): void {
-        this.initializeCanvas(this.canvas.width, this.canvas.height, this.canvas);
+        this.initializeCanvas(this.canvas);
     }
 
     renderPoints(): void {
@@ -65,15 +65,15 @@ abstract class Bezier implements IBezier, ICanvas {
 
     }
 
-    initializeCanvas(width: number, height: number, canvas: HTMLCanvasElement) {
+    initializeCanvas(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
-        this.canvas.width = width;
-        this.canvas.height = height;
+        this.canvas.width = $("#canvas").width();
+        this.canvas.height = 800;
 
         this.context = canvas.getContext("2d");
 
         this.context.fillStyle = this.context.createPattern(this.canvasBackground, "repeat");
-        this.context.fillRect(0, 0, width, height);
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     }
 
@@ -102,14 +102,14 @@ abstract class Bezier implements IBezier, ICanvas {
         this.mouse = new Mouse();
 
         this.canvasBackground = new Image();
-        this.canvasBackground.src = "/Images/canvasBg.png";
+        this.canvasBackground.src = "/Images/greyzz.png";
 
         this.pointsCount = pointsCount;
 
-        this.initializeCanvas(width, height, canvas);
+        this.initializeCanvas(canvas);
 
         this.canvasBackground.onload = () => {
-            this.initializeCanvas(width, height, canvas);
+            this.initializeCanvas(canvas);
         };
 
         this.clearCanvas();

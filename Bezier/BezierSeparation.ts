@@ -46,10 +46,7 @@ class BezierSeparation extends Bezier {
             super.createPoint(point);
         }
 
-        //if (this.curveDrawed) {
-        //    super.createPoint(point);
-        //    this.seperateCurve(point);
-        //}
+     
 
         if (this.drawButton === null && this.points.length > 2) {
             this.drawButton = document.createElement("a");

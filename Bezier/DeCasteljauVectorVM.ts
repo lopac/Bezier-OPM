@@ -1,4 +1,4 @@
-class DeCasteljauVectorApi {
+class DeCasteljauVectorVM {
     U: number;
     Vectors: Array<Point>;
 

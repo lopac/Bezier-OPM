@@ -41,10 +41,6 @@ var BezierSeparation = (function (_super) {
         if (this.points.length < 15 && this.curveDrawed === false) {
             _super.prototype.createPoint.call(this, point);
         }
-        //if (this.curveDrawed) {
-        //    super.createPoint(point);
-        //    this.seperateCurve(point);
-        //}
         if (this.drawButton === null && this.points.length > 2) {
             this.drawButton = document.createElement("a");
             this.drawButton.className = "btn btn-primary";
@@ -89,4 +85,3 @@ var BezierSeparation = (function (_super) {
     };
     return BezierSeparation;
 }(Bezier));
-//# sourceMappingURL=BezierSeparation.js.map

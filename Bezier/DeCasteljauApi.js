@@ -5,4 +5,3 @@ var DeCasteljauApi = (function () {
     }
     return DeCasteljauApi;
 }());
-//# sourceMappingURL=DeCasteljauApi.js.map

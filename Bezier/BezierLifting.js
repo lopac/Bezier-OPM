@@ -99,4 +99,3 @@ var BezierLifting = (function (_super) {
     };
     return BezierLifting;
 }(Bezier));
-//# sourceMappingURL=BezierLifting.js.map

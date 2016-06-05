@@ -1,4 +1,5 @@
 window.onload = function () {
+    $("#taskContainer").hide();
     if (IsMobile.any()) {
         $(".navbar-collapse collapse").remove();
         $("#logo").remove();
@@ -138,4 +139,3 @@ window.onload = function () {
         var bezierLifting = new BezierLifting(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
     });
 };
-//# sourceMappingURL=app.js.map

@@ -1,7 +1,7 @@
 class CanvasUi {
     static width: number;
     static height: number;
-    static taskContainer: boolean = false;
+    static taskContainer: HTMLElement = null;
 
     static canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
@@ -10,21 +10,17 @@ class CanvasUi {
         this.width = window.innerWidth * 0.70;
         this.height = 800;
 
-
-        for (let i = 0; i < 9; i++) {
-            $(`#task${i + 1}`).removeClass("btn btn-success").addClass("btn btn-primary");
-        }
-
-        clickedButton.removeClass("btn btn-primary").addClass("btn btn-success");
-
         this.clearCanvas();
 
-        if (this.taskContainer === false) {
+        if (this.taskContainer === null) {
 
-            let taskContainer = document.getElementById("taskContainer");
+
+            this.taskContainer = document.getElementById("taskContainer");
+
+            $("#taskContainer").show();
 
             let panel = document.createElement("div");
-            panel.className = "panel-heading";
+            panel.className = "col-lg-12 panel-heading";
 
             let heading = document.createElement("h4");
             heading.id = "taskTitle";
@@ -33,12 +29,10 @@ class CanvasUi {
 
             let descp = document.createElement("div");
             descp.id = "taskDescription";
-            descp.className = "panel-body";
+            descp.className = "col-lg-12 panel-body";
 
-            taskContainer.appendChild(panel);
-            taskContainer.appendChild(descp);
-
-            this.taskContainer = true;
+            this.taskContainer.appendChild(panel);
+            this.taskContainer.appendChild(descp);
         } else {
             $("#taskTitle").empty();
             $("#taskDescription").empty();
@@ -48,8 +42,6 @@ class CanvasUi {
 
     }
 
-
-    
 
     private static clearCanvas() {
         this.canvas.width = this.canvas.width;

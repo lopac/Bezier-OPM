@@ -1,1 +1,0 @@
-//# sourceMappingURL=JQueryGenericPromise.js.map

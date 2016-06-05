@@ -136,10 +136,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Flatly.css" />
+    <Content Include="Content\Cosmo.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\canvasBg.png" />
+    <Content Include="Images\greyzz.png" />
     <Content Include="Images\lil_fiber.png" />
     <Content Include="Images\ms.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -201,7 +201,7 @@
     <TypeScriptCompile Include="DeCasteljauApi.ts" />
     <TypeScriptCompile Include="DeCasteljauPoint.ts" />
     <TypeScriptCompile Include="DeCasteljauVector.ts" />
-    <TypeScriptCompile Include="DeCasteljauVectorApi.ts" />
+    <TypeScriptCompile Include="DeCasteljauVectorVM.ts" />
     <TypeScriptCompile Include="IBezier.ts" />
     <TypeScriptCompile Include="ICanvas.ts" />
     <TypeScriptCompile Include="IDeCasteljau.ts" />

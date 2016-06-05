@@ -45,7 +45,7 @@ var DeCasteljauPoint = (function () {
         pointForm.id = "pointForm";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "To\uFFFDka P" + this.pointsCount++;
+        formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
         var inputX = document.createElement("input");
         inputX.className = "form-control";
         inputX.value = p.x;
@@ -103,4 +103,3 @@ var DeCasteljauPoint = (function () {
     };
     return DeCasteljauPoint;
 }());
-//# sourceMappingURL=DeCasteljauPoint.js.map
