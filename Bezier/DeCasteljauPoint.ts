@@ -1,4 +1,4 @@
-class DeCasteljauPoint implements IDeCasteljau<Point> {
+﻿class DeCasteljauPoint implements IDeCasteljau<Point> {
 
     points: Array<Point>;
     addPointBtn: HTMLAnchorElement;
@@ -69,7 +69,7 @@ class DeCasteljauPoint implements IDeCasteljau<Point> {
 
         let formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = `To�ka P${this.pointsCount++}`;
+        formLabel.innerHTML = `Točka P${this.pointsCount++}`;
 
       
 

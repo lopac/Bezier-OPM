@@ -1,4 +1,4 @@
-class DeCasteljau implements IDeCasteljau<Point> {
+Ôªøclass DeCasteljau implements IDeCasteljau<Point> {
 
     points: Array<Point>;
 
@@ -39,13 +39,13 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
         this.addPointBtn = document.createElement("a");
         this.addPointBtn.className = "btn btn-primary";
-        this.addPointBtn.innerHTML = "Dodaj toËku";
+        this.addPointBtn.innerHTML = "Dodaj toƒçku";
         this.addPointBtn.onclick = () => this.addPoint();
 
         this.computeBtn = document.createElement("a");
         this.computeBtn.className = "btn btn-success";
         this.computeBtn.id = "computeBtn";
-        this.computeBtn.innerHTML = "IzraËunaj";
+        this.computeBtn.innerHTML = "Izraƒçunaj";
 
         this.computeBtn.onclick = () => {
 
@@ -76,7 +76,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
         let formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "Rezultantna toËka";
+        formLabel.innerHTML = "Rezultantna toƒçka";
 
         let x = document.createElement("input");
         x.className = "form-control";
@@ -138,7 +138,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
             this.u = Number($("#u").val());
             if (this.u > 1) {
-                alert("Parametar u ne smije biti veÊi od 1!");
+                alert("Parametar u ne smije biti veƒái od 1!");
                 return;
             }
 
@@ -151,7 +151,7 @@ class DeCasteljau implements IDeCasteljau<Point> {
 
         let formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = `ToËka P${this.pointsCount++}`;
+        formLabel.innerHTML = `Toƒçka P${this.pointsCount++}`;
 
         let inputX = document.createElement("input");
         inputX.className = "form-control";

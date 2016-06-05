@@ -1,4 +1,4 @@
-class DeCasteljauVector implements IDeCasteljau<Vector> {
+﻿class DeCasteljauVector implements IDeCasteljau<Vector> {
 
     points: Array<Vector>;
     resultPoints: Array<Vector>;
@@ -58,7 +58,7 @@ class DeCasteljauVector implements IDeCasteljau<Vector> {
 
         let formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = `To�ka P${this.pointsCount++}`;
+        formLabel.innerHTML = `Točka P${this.pointsCount++}`;
 
         let x = document.createElement("input");
         x.className = "form-control";
