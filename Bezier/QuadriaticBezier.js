@@ -44,3 +44,4 @@ var QuadriaticBezier = (function (_super) {
     };
     return QuadriaticBezier;
 }(Bezier));
+//# sourceMappingURL=QuadriaticBezier.js.map

@@ -20,12 +20,12 @@ var DeCasteljau = (function () {
         $("#taskCom").css("width", 200).append(form).append(this.breakline);
         this.addPointBtn = document.createElement("a");
         this.addPointBtn.className = "btn btn-primary";
-        this.addPointBtn.innerHTML = "Dodaj točku";
+        this.addPointBtn.innerHTML = "Dodaj to�ku";
         this.addPointBtn.onclick = function () { return _this.addPoint(); };
         this.computeBtn = document.createElement("a");
         this.computeBtn.className = "btn btn-success";
         this.computeBtn.id = "computeBtn";
-        this.computeBtn.innerHTML = "Izračunaj";
+        this.computeBtn.innerHTML = "Izra�unaj";
         this.computeBtn.onclick = function () {
             var point = new Point();
             point.x = Number($("#p" + _this.pointsCount + "x").val());
@@ -43,7 +43,7 @@ var DeCasteljau = (function () {
         pointForm.className = "form-group has-success";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "Rezultantna točka";
+        formLabel.innerHTML = "Rezultantna to�ka";
         var x = document.createElement("input");
         x.className = "form-control";
         x.disabled = true;
@@ -88,7 +88,7 @@ var DeCasteljau = (function () {
         else {
             this.u = Number($("#u").val());
             if (this.u > 1) {
-                alert("Parametar u ne smije biti veći od 1!");
+                alert("Parametar u ne smije biti ve�i od 1!");
                 return;
             }
             $("#taskBtns").append(this.breakline).append(this.computeBtn);
@@ -97,7 +97,7 @@ var DeCasteljau = (function () {
         pointForm.className = "form-group";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
+        formLabel.innerHTML = "To\uFFFDka P" + this.pointsCount++;
         var inputX = document.createElement("input");
         inputX.className = "form-control";
         inputX.id = "p" + this.pointsCount + "x";
@@ -119,3 +119,4 @@ var DeCasteljau = (function () {
     };
     return DeCasteljau;
 }());
+//# sourceMappingURL=DeCasteljau.js.map

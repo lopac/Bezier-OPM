@@ -142,7 +142,6 @@
     <Content Include="Images\canvasBg.png" />
     <Content Include="Images\lil_fiber.png" />
     <Content Include="Images\ms.png" />
-    <Content Include="Views\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\bezier-opm.pubxml" />
@@ -171,9 +170,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />

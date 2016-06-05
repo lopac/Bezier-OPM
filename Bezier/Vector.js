@@ -9,3 +9,4 @@ var Vector = (function () {
     }
     return Vector;
 }());
+//# sourceMappingURL=Vector.js.map

@@ -1,0 +1,1 @@
+//# sourceMappingURL=JQueryCoordinates.js.map

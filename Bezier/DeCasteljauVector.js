@@ -35,7 +35,7 @@ var DeCasteljauVector = (function () {
         pointForm.className = "form-group";
         var formLabel = document.createElement("h5");
         formLabel.className = "control-label";
-        formLabel.innerHTML = "To\u010Dka P" + this.pointsCount++;
+        formLabel.innerHTML = "To\uFFFDka P" + this.pointsCount++;
         var x = document.createElement("input");
         x.className = "form-control";
         x.disabled = true;
@@ -102,3 +102,4 @@ var DeCasteljauVector = (function () {
     };
     return DeCasteljauVector;
 }());
+//# sourceMappingURL=DeCasteljauVector.js.map

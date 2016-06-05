@@ -7,3 +7,4 @@ var Mouse = (function () {
     }
     return Mouse;
 }());
+//# sourceMappingURL=Mouse.js.map
