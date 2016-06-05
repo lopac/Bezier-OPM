@@ -1,5 +1,5 @@
 var Bezier = (function () {
-    function Bezier(width, height, canvas, pointsCount) {
+    function Bezier(canvas, pointsCount) {
         var _this = this;
         if (pointsCount === void 0) { pointsCount = null; }
         this.points = new Array();

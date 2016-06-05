@@ -1,14 +1,11 @@
 class CanvasUi {
-    static width: number;
-    static height: number;
+ 
     static taskContainer: HTMLElement = null;
 
     static canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
     public static refresh(clickedButton: JQuery) {
 
-        this.width = window.innerWidth * 0.70;
-        this.height = 800;
 
         this.clearCanvas();
 
@@ -17,7 +14,7 @@ class CanvasUi {
 
             this.taskContainer = document.getElementById("taskContainer");
 
-            $("#taskContainer").show();
+            $("#taskContainer").addClass("panel panel-info");
 
             let panel = document.createElement("div");
             panel.className = "col-lg-12 panel-heading";

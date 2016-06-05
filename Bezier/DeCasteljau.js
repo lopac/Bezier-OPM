@@ -17,13 +17,16 @@ var DeCasteljau = (function () {
         input.value = "Unesite u..";
         form.appendChild(label);
         form.appendChild(input);
-        $("#taskCom").css("width", 200).append(form).append(this.breakline);
+        $("#taskCom").append(form).append(this.breakline);
         this.addPointBtn = document.createElement("a");
-        this.addPointBtn.className = "btn btn-primary";
+        this.addPointBtn.className = "col-lg-12 btn btn-primary";
         this.addPointBtn.innerHTML = "Dodaj točku";
         this.addPointBtn.onclick = function () { return _this.addPoint(); };
+        var space = document.createElement("div");
+        space.className = "col-lg-12";
+        $(space).css("height", "20px");
         this.computeBtn = document.createElement("a");
-        this.computeBtn.className = "btn btn-success";
+        this.computeBtn.className = "col-lg-12 btn btn-success";
         this.computeBtn.id = "computeBtn";
         this.computeBtn.innerHTML = "Izračunaj";
         this.computeBtn.onclick = function () {
@@ -33,7 +36,7 @@ var DeCasteljau = (function () {
             _this.points.push(point);
             _this.compute();
         };
-        $("#taskBtns").append(this.addPointBtn);
+        $("#taskBtns").append(this.addPointBtn).append(space);
     }
     DeCasteljau.prototype.toFixed = function (n) {
         return parseFloat((n).toFixed(2)).toString();
@@ -87,11 +90,11 @@ var DeCasteljau = (function () {
         }
         else {
             this.u = Number($("#u").val());
-            if (this.u > 1) {
-                alert("Parametar u ne smije biti veći od 1!");
+            if (this.u > 1 || this.u === 0) {
+                alert(this.u > 1 ? "Parametar u ne smije biti veći od 1!" : "Pogrešan unos parametra u!");
                 return;
             }
-            $("#taskBtns").append(this.breakline).append(this.computeBtn);
+            $("#taskBtns").append(this.computeBtn);
         }
         var pointForm = document.createElement("div");
         pointForm.className = "form-group";

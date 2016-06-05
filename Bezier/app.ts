@@ -1,6 +1,5 @@
 ﻿window.onload = () => {
 
-    $("#taskContainer").hide();
 
     if (IsMobile.any()) {
         $(".navbar-collapse collapse").remove();
@@ -18,11 +17,11 @@
 
             $("#taskDescription")
                 .html(() =>
-                    "Napravite na racunalu program koji ce omoguciti korisniku da oznaci cetiri tocke u ravnini i da se nakon" +
-                    "<br/> toga nacrta Bezierova krivulja kojoj su to kontrolne tocke. Isto tako mora biti omoguceno korisniku" +
-                    "<br/>da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. " +
-                    "<br/>Kontrolne tocke neka budu redom spojene crtkanim linijama.");
-            let quadriaticBezier = new QuadriaticBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
+                    "Napravite na računalu program koji će omogućiti korisniku da označi četiri tocke u ravnini i da se nakon" +
+                    "toga nacrta Bezierova krivulja kojoj su to kontrolne točke. Isto tako mora biti omogućeno korisniku" +
+                    "da može micati kontrolne točke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. " +
+                    "Kontrolne točke neka budu redom spojene crtkanim linijama.");
+            let quadriaticBezier = new QuadriaticBezier(CanvasUi.canvas, 4);
         });
 
     $("#task2")
@@ -46,13 +45,13 @@
             $("#taskTitle").html(() => "Zadatak 7.");
             $("#taskDescription")
                 .html(() =>
-                    "Za krivulje iz zadatka 3 i zadatka 4 izracunajte pomocu Casteljaunovog algoritma q(1/2) i q(3/4).Zadatak napravite rucno i na racunalu pomocu implementiranog algoritma iz prethodnog zadatka."
+                    "Za krivulje iz zadatka 3 i zadatka 4 izračunajte pomoću Casteljaunovog algoritma q(1/2) i q(3/4).Zadatak napravite ručno i na računalu pomoću implementiranog algoritma iz prethodnog zadatka."
                 );
 
-            $("#taskCom").css("width", 200);
+            //$("#taskCom").css("width", 200);
 
             let label = document.createElement("label");
-            label.className = "col-lg-2 control-label";
+            label.className = "col-lg-12 control-label";
             label.htmlFor = "select";
             label.innerHTML = "Odaberite podzadatak";
 
@@ -74,7 +73,6 @@
             o4.innerHTML = "zadatak 4. u = 3/4";
 
 
-
             o1.onclick = () => {
                 $("#taskCom").empty();
 
@@ -84,7 +82,6 @@
                 $("#select").append(o1).append(o2).append(o3).append(o4);
                 let deCasteljauPoint = new DeCasteljauPoint(1 / 2);
             };
-
 
 
             o2.onclick = () => {
@@ -139,7 +136,7 @@
                     "Uputa: Nakon što nacrtate željeni broj kontrolnih točaka te pritisnite \"Nacrtaj krivulju\" kako biste ju podijelili dva puta kliknite mišom na mjesto gdje biste željeli podijeliti krivulju na 2 dijela"
                 );
 
-            let c = new BezierSeparation(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
+            let c = new BezierSeparation(CanvasUi.canvas);
         });
 
     $("#task5")
@@ -155,7 +152,7 @@
                     "Isto tako mora biti omoguceno korisniku da moze micati kontrolne tocke i da se s tim micanjem istovremeno i mijenja Bezierova krivulja. Kontrolne tocke neka budu redom spojene crtkanim linijama."
                 );
 
-            let d = new NBezier(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
+            let d = new NBezier(CanvasUi.canvas);
 
         });
 
@@ -173,16 +170,17 @@
             let deCasteljauPoint = new DeCasteljauPoint(0.2);
 
 
-
         });
 
     $("#task7")
         .click(() => {
             CanvasUi.refresh($("#task7"));
             $("#taskTitle").html(() => "Zadatak 17.");
-            $("#taskDescription").html(() => "Napravite na računalu program koji će nacrtati dvije Bezierove krivulje stupnja tri zajedno s njihovim kontrolnim točkama tako da druga krivulja ima početak u točki u kojoj je prva završila. Program neka bude interaktivan tako da je moguće mišem mijenjati kontrolne točke kako bi se dobivali različiti oblici tih krivulja. Probajte micanjem kontrolnih točaka dobiti G1 odnosno C 1 neprekidnu krivulju. Olakšajte korisniku dobivanje tih neprekidnosti direktnim klikom na određenu tipku koja će o tome brinuti");
+            $("#taskDescription")
+                .html(() =>
+                    "Napravite na računalu program koji će nacrtati dvije Bezierove krivulje stupnja tri zajedno s njihovim kontrolnim točkama tako da druga krivulja ima početak u točki u kojoj je prva završila. Program neka bude interaktivan tako da je moguće mišem mijenjati kontrolne točke kako bi se dobivali različiti oblici tih krivulja. Probajte micanjem kontrolnih točaka dobiti G1 odnosno C 1 neprekidnu krivulju. Olakšajte korisniku dobivanje tih neprekidnosti direktnim klikom na određenu tipku koja će o tome brinuti");
 
-            let bS = new BezierSeparation(CanvasUi.width, CanvasUi.height, CanvasUi.canvas);
+            let bS = new BezierSeparation(CanvasUi.canvas);
 
 
         });
@@ -196,8 +194,8 @@
                 .html(() =>
                     "Napisite program koji ce za danu Bezierovu krivulju stupnja k zadanu svojim kontrolnim tockama prikazati i kontrolne tocke koje ce tu istu krivulju reprezentirati kao Bezierovu krivulju stupnja k + 1. Kontrolne tocke koje pripadaju razlicitim skupinama neka budu razlicito obojane. Tocke iz pojedinih skupina neka redom budu spojene isprekidanim linijama. Program mora korisniku dozvoliti mijenjanje polozaja kontrolnih tocaka. Program napravite za k = 2 i k = 3.");
 
-            let bezierLifting = new BezierLifting(CanvasUi.width, CanvasUi.height, CanvasUi.canvas,3);
- 
+            let bezierLifting = new BezierLifting(CanvasUi.canvas, 3);
+
         });
 
     $("#task9")
@@ -209,7 +207,7 @@
                 .html(() =>
                     "Napisite program koji ce za danu Bezierovu krivulju stupnja k zadanu svojim kontrolnim tockama prikazati i kontrolne tocke koje ce tu istu krivulju reprezentirati kao Bezierovu krivulju stupnja k + 1. Kontrolne tocke koje pripadaju razlicitim skupinama neka budu razlicito obojane. Tocke iz pojedinih skupina neka redom budu spojene isprekidanim linijama. Program mora korisniku dozvoliti mijenjanje polozaja kontrolnih tocaka. Program napravite za k = 2 i k = 3.");
 
-            let bezierLifting = new BezierLifting(CanvasUi.width, CanvasUi.height, CanvasUi.canvas, 4);
+            let bezierLifting = new BezierLifting(CanvasUi.canvas, 4);
 
         });
 };

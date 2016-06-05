@@ -96,7 +96,7 @@ abstract class Bezier implements IBezier, ICanvas {
         return selected;
     }
 
-    constructor(width: number, height: number, canvas: HTMLCanvasElement, pointsCount: number = null) {
+    constructor(canvas: HTMLCanvasElement, pointsCount: number = null) {
 
         this.points = new Array<Point>();
         this.mouse = new Mouse();

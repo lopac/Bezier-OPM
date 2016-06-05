@@ -2,12 +2,10 @@ var CanvasUi = (function () {
     function CanvasUi() {
     }
     CanvasUi.refresh = function (clickedButton) {
-        this.width = window.innerWidth * 0.70;
-        this.height = 800;
         this.clearCanvas();
         if (this.taskContainer === null) {
             this.taskContainer = document.getElementById("taskContainer");
-            $("#taskContainer").show();
+            $("#taskContainer").addClass("panel panel-info");
             var panel = document.createElement("div");
             panel.className = "col-lg-12 panel-heading";
             var heading = document.createElement("h4");
