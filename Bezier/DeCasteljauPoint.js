@@ -7,17 +7,17 @@ var DeCasteljauPoint = (function () {
         var form = document.createElement("div");
         form.className = "form-group";
         var label = document.createElement("h5");
-        label.className = "control-label";
-        label.innerHTML = "U";
+        label.className = "col-lg-12  control-label";
+        label.innerHTML = "u";
         var input = document.createElement("input");
-        input.className = "form-control";
+        input.className = "col-lg-12 form-control";
         input.id = "u";
         input.disabled = true;
         input.type = "number";
         input.value = this.u.toString();
         form.appendChild(label);
         form.appendChild(input);
-        $("#taskCom").css("width", 200).append(form).append(this.breakline);
+        $("#taskCom").append(form).append(this.breakline);
         if (this.u === 0.2) {
             this.addPoint(new Point(1, 1));
             this.addPoint(new Point(1.75, 3));

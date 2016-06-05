@@ -21,11 +21,11 @@
         form.className = "form-group";
 
         let label = document.createElement("h5");
-        label.className = "control-label";
-        label.innerHTML = "U";
+        label.className = "col-lg-12  control-label";
+        label.innerHTML = "u";
 
         let input = document.createElement("input");
-        input.className = "form-control";
+        input.className = "col-lg-12 form-control";
         input.id = "u";
         input.disabled = true;
         input.type = "number";
@@ -37,7 +37,7 @@
 
         form.appendChild(input);
 
-        $("#taskCom").css("width", 200).append(form).append(this.breakline);
+        $("#taskCom").append(form).append(this.breakline);
 
 
         if (this.u === 0.2) {
@@ -90,6 +90,8 @@
         pointForm.appendChild(inputX);
         pointForm.appendChild(this.breakline);
         pointForm.appendChild(inputY);
+
+
 
         $("#taskCom").append(pointForm).append(this.breakline);
     }

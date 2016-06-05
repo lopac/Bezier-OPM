@@ -34,13 +34,12 @@ window.onload = function () {
             .html(function () {
             return "Za krivulje iz zadatka 3 i zadatka 4 izračunajte pomoću Casteljaunovog algoritma q(1/2) i q(3/4).Zadatak napravite ručno i na računalu pomoću implementiranog algoritma iz prethodnog zadatka.";
         });
-        //$("#taskCom").css("width", 200);
         var label = document.createElement("label");
         label.className = "col-lg-12 control-label";
         label.htmlFor = "select";
         label.innerHTML = "Odaberite podzadatak";
         var select = document.createElement("select");
-        select.className = "form-control";
+        select.className = "col-lg-12 form-control";
         select.id = "select";
         var o1 = document.createElement("option");
         o1.innerHTML = "zadatak 3. u = 1/2";
