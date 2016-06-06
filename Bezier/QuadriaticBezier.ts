@@ -11,8 +11,8 @@ class QuadriaticBezier extends Bezier {
 
     drawBezierCurve() {
         this.context.setLineDash([0, 0]);
-        this.context.lineWidth = 3;
-        this.context.strokeStyle = "#be574e";
+        this.context.lineWidth = 2;
+        this.context.strokeStyle = "#ae0001";
 
         this.context.moveTo(this.points[0].x, this.points[0].y);
 

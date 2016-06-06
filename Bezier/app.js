@@ -35,7 +35,7 @@ window.onload = function () {
             return "Za krivulje iz zadatka 3 i zadatka 4 izračunajte pomoću Casteljaunovog algoritma q(1/2) i q(3/4).Zadatak napravite ručno i na računalu pomoću implementiranog algoritma iz prethodnog zadatka.";
         });
         var label = document.createElement("label");
-        label.className = "col-lg-12 control-label";
+        label.className = "control-label";
         label.htmlFor = "select";
         label.innerHTML = "Odaberite podzadatak";
         var select = document.createElement("select");

@@ -16,7 +16,6 @@ var Bezier = (function () {
             _this.mouse.x = event.offsetX || (event.layerX - canvas.offsetLeft);
             _this.mouse.y = event.offsetY || (event.layerY - canvas.offsetTop);
             var newPoint = new Point(_this.mouse.x, _this.mouse.y);
-            console.log(JSON.stringify(newPoint));
             if (_this.getSelectedPointIndex() == null) {
                 _this.createPoint(newPoint);
             }
@@ -48,11 +47,11 @@ var Bezier = (function () {
     }
     Bezier.prototype.drawControlPoint = function (point) {
         this.context.setLineDash([0, 0]);
-        this.context.fillStyle = "#35465c";
+        this.context.fillStyle = "#ae0001";
         this.context.lineWidth = 4;
         this.context.beginPath();
         this.context.arc(point.x, point.y, 5, 0, Math.PI * 2, true);
-        this.context.strokeStyle = "#7a97e8";
+        this.context.strokeStyle = "#d64d4d";
         this.context.closePath();
         this.context.stroke();
         this.context.fill();
@@ -66,8 +65,8 @@ var Bezier = (function () {
             p2 = this.points[length_1 - 1];
         }
         this.context.setLineDash([5, 15]);
-        this.context.lineWidth = 1.5;
-        this.context.strokeStyle = "#ec3a34";
+        this.context.lineWidth = 1.2;
+        this.context.strokeStyle = "#048364";
         this.context.beginPath();
         this.context.moveTo(p1.x, p1.y);
         this.context.lineTo(p2.x, p2.y);

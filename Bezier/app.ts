@@ -50,7 +50,7 @@
 
 
             let label = document.createElement("label");
-            label.className = "col-lg-12 control-label";
+            label.className = "control-label";
             label.htmlFor = "select";
             label.innerHTML = "Odaberite podzadatak";
 

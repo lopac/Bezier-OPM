@@ -21,13 +21,12 @@ var NBezier = (function (_super) {
     NBezier.prototype.drawBezierCurve = function () {
         this.context.setLineDash([0, 0]);
         this.context.lineWidth = 2;
-        this.context.strokeStyle = "#be574e";
+        this.context.strokeStyle = "#ae0001";
         this.context.moveTo(this.points[0].x, this.points[0].y);
         for (var i = 0; i <= 1; i += 0.005) {
             var point = this.computeBezierPoint(this.points.length - 1, 0, i);
             this.context.lineTo(point.x, point.y);
         }
-        console.log("DBC");
         this.context.stroke();
         if (this.curveDrawed === false) {
             this.curveDrawed = true;
@@ -42,11 +41,10 @@ var NBezier = (function (_super) {
         }
         if (this.drawButton === null && this.points.length > 2) {
             this.drawButton = document.createElement("a");
-            this.drawButton.className = "btn btn-primary";
+            this.drawButton.className = "col-lg-12 btn btn-danger";
             this.drawButton.innerHTML = "Nacrtaj krivulju";
             this.drawButton.onclick = function () { return _this.drawBezierCurve(); };
-            $("#taskBtns").append(this.drawButton);
-            console.log("IF");
+            $("#taskBtns").append(this.drawButton).append(function () { return "<div class='col-lg-12' style='height: 30px;' ></div>"; });
         }
     };
     NBezier.prototype.renderPoints = function () {

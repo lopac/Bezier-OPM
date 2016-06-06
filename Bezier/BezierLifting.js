@@ -23,7 +23,7 @@ var BezierLifting = (function (_super) {
         if (points === void 0) { points = null; }
         this.context.setLineDash([0, 0]);
         this.context.lineWidth = 2;
-        this.context.strokeStyle = "#be574e";
+        this.context.strokeStyle = "#ae0001";
         var p = points === null ? this.points : points;
         this.context.moveTo(p[0].x, p[0].y);
         for (var i = 0; i <= 1; i += 0.005) {
@@ -46,10 +46,10 @@ var BezierLifting = (function (_super) {
         }
         if (this.drawButton === null && this.points.length >= this.pointsCount) {
             this.drawButton = document.createElement("a");
-            this.drawButton.className = "btn btn-primary";
+            this.drawButton.className = "col-lg-12 btn btn-danger";
             this.drawButton.innerHTML = "Podigni krivulju";
             this.drawButton.onclick = function () { return _this.liftCurve(); };
-            $("#taskBtns").append(this.drawButton);
+            $("#taskBtns").append(this.drawButton).append(function () { return "<div class='col-lg-12' style='height: 30px;' ></div>"; });
         }
     };
     BezierLifting.prototype.renderPoints = function () {

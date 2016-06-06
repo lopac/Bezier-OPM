@@ -17,7 +17,7 @@ class CanvasUi {
             $("#taskContainer").addClass("panel panel-info");
 
             let panel = document.createElement("div");
-            panel.className = "col-lg-12 panel-heading";
+            panel.className = "panel-heading";
 
             let heading = document.createElement("h4");
             heading.id = "taskTitle";
@@ -26,7 +26,7 @@ class CanvasUi {
 
             let descp = document.createElement("div");
             descp.id = "taskDescription";
-            descp.className = "col-lg-12 panel-body";
+            descp.className = "panel-body";
 
             this.taskContainer.appendChild(panel);
             this.taskContainer.appendChild(descp);

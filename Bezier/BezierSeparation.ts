@@ -20,7 +20,7 @@ class BezierSeparation extends Bezier {
     drawBezierCurve(points: Array<Point> = null) {
         this.context.setLineDash([0, 0]);
         this.context.lineWidth = 2;
-        this.context.strokeStyle = "#be574e";
+        this.context.strokeStyle = "#ae0001";
 
         let p = points === null ? this.points : points;
 
@@ -50,12 +50,12 @@ class BezierSeparation extends Bezier {
 
         if (this.drawButton === null && this.points.length > 2) {
             this.drawButton = document.createElement("a");
-            this.drawButton.className = "btn btn-primary";
+            this.drawButton.className = "col-lg-12 btn btn-danger";
             this.drawButton.innerHTML = "Nacrtaj krivulju";
 
             this.drawButton.onclick = () => this.drawBezierCurve();
 
-            $("#taskBtns").append(this.drawButton);
+            $("#taskBtns").append(this.drawButton).append(() => "<div class='col-lg-12' style='height: 30px;' ></div>");
 
         }
 

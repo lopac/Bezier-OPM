@@ -7,13 +7,13 @@ var CanvasUi = (function () {
             this.taskContainer = document.getElementById("taskContainer");
             $("#taskContainer").addClass("panel panel-info");
             var panel = document.createElement("div");
-            panel.className = "col-lg-12 panel-heading";
+            panel.className = "panel-heading";
             var heading = document.createElement("h4");
             heading.id = "taskTitle";
             panel.appendChild(heading);
             var descp = document.createElement("div");
             descp.id = "taskDescription";
-            descp.className = "col-lg-12 panel-body";
+            descp.className = "panel-body";
             this.taskContainer.appendChild(panel);
             this.taskContainer.appendChild(descp);
         }
